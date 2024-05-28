@@ -13,6 +13,22 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX ccs: <http://data.europa.eu/949/>
 """
 
+def resolve_uri(uri: str) -> dict:
+    query = prefixes + """
+        SELECT ?p ?o
+        WHERE {{   
+            <{uri}> ?p ?o 
+            }}
+    """.format(uri=uri)
+    attributes = era_ccstms_graph.query(query)   
+    
+    dict_result = {}
+    for key, value in attributes:
+        dict_result[str(key).split("#")[-1]] = str(value)
+        
+    print(dict_result)
+    return dict_result
+
 query_domains = prefixes + """
 SELECT DISTINCT ?domain
 WHERE {
@@ -29,27 +45,16 @@ WHERE {{
 
 domains = requirements_graph.query(query_domains)
 
-def resolve_uri(uri: str) -> dict:
-    import json
-    query = prefixes + """
-        SELECT ?class ?attribute ?value 
-        WHERE {{   
-            ?class rdf:type <{uri}> .   
-            ?class ?attribute ?value . 
-        }}
-    """.format(uri=uri)
-    attributes = era_ccstms_graph.query(query)
-    print(attributes.serialize(format="json-ld"))
-
 result = []
 for domain in domains:
     domain_uri = str(domain[0])
     result.append({"domain": domain_uri, "name": domain[0].split("/")[-1], "attributes": []})
     
-    [result[-1]['attributes'].append(str(x[0])) for x in requirements_graph.query(query_attribute.format(domain_uri=domain_uri))]
+    tmp_attributes = [str(x[0]) for x in requirements_graph.query(query_attribute.format(domain_uri=domain_uri))]
     
-    for attribute in result[-1]['attributes']:
-        resolve_uri(attribute)
-        
+    for attribute in tmp_attributes:
+        tmp = resolve_uri(attribute)
+        if tmp:
+            result[-1]['attributes'].append(tmp)
+            
 print(result)
-    
