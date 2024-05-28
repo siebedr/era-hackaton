@@ -1,0 +1,985 @@
+{
+  "name": "infra",
+  "intId": 1,
+  "isDefinedBy": "http://ERJU/datamodel/0.4/infrastructure",
+  "prefix": "infra",
+  "containerStruct": "Infrastructure",
+  "version": "0.4.1",
+  "info": "Railway network topology and topography, position wrt topology, location on a map, geometry, aka. alignment)",
+  "enums": [
+  {
+    "name": "Direction",
+    "info": "List of applicable usage directions with respect to Track Edge e. g. for restrictions",
+    "enumLiterals": [
+      {"intId": 0, "name": "dirBoth", "info": "Applicable for 'both' travel directions"},
+      {"intId": 1, "name": "dirSame", "info": "Applicable in the same direction as TrackEdge"},
+      {"intId": 2, "name": "dirReverse", "info": "Applicable in the opposite direction of the TrackEdge (from end to start)."}
+    ]
+  },
+  {
+    "name": "TransitionType",
+    "see": "https://standards.buildingsmart.org/IFC/RELEASE/IFC4_1/FINAL/HTML/schema/ifcgeometryresource/lexical/ifctransitioncurvetype.htm",
+    "enumLiterals": [
+      {"intId": 0, "name": "clothoidCurve"},
+      {"intId": 1, "name": "biquadraticParabola"},
+      {"intId": 2, "name": "blossCurve"},
+      {"intId": 3, "name": "cosineCurve"},
+      {"intId": 4, "name": "cubicParabola"},
+      {"intId": 5, "name": "sineCurve"},
+      {"intId": 6, "name": "wienerBogen"}
+    ]
+  },
+  {
+    "name": "BaliseGroupFunction",
+    "enumLiterals": [
+      {"intId": 0, "name": "location"},
+      {"intId": 1, "name": "sessionManagement"},
+      {"intId": 2, "name": "networkRegistration"}
+    ]
+  },
+  {
+    "name": "LoadingGaugeType",
+    "info": "is coming from ETCS packets 11,12 mLoadingGauge",
+    "see": "https://linked.ec-dataplatform.eu/describe/?url=http://data.europa.eu/949/concepts/gaugings/GaugingProfiles",
+    "enumLiterals": [
+      {"intId": 0, "name": "loadingGaugeIncompatible", "info": "The train does not fit to any of the interoperable loading gauge profiles"},
+      {"intId": 1, "name": "g1"},
+      {"intId": 2, "name": "gA"},
+      {"intId": 3, "name": "gB"},
+      {"intId": 4, "name": "gC"}
+    ]
+  },
+  {
+    "name": "ConditionType",
+    "info": "List of track conditions",
+    "enumLiterals": [
+      {"intId": 0, "name": "powerlessLowPanthograph", "info": "Powerless section, lower Pantograph"},
+      {"intId": 1, "name": "powerlessMainSwitch", "info": "Powerless section, switch off main power switch"},
+      {"intId": 2, "name": "airTightness"},
+      {"intId": 3, "name": "soundHorn"},
+      {"intId": 4, "name": "nonStoppingArea"},
+      {"intId": 5, "name": "tunnelStoppingArea"},
+      {"intId": 6, "name": "bigMetalMasses", "info": "Big metal masses, ignore on-board integrity check alarm of balise transmission"},
+      {"intId": 7, "name": "radioHole", "info": "stop supervision of the loss of safe radio connection"},
+      {"intId": 8, "name": "switchOffRegenerativeBrake"},
+      {"intId": 9, "name": "switchOffEddyCurrentBrakeForServiceBrake"},
+      {"intId": 10, "name": "switchOffEddyCurrentBrakeForEmergencyBrake"},
+      {"intId": 11, "name": "switchOffMagneticShoeBrake"}
+    ]
+  },
+  {
+    "name": "BrakeType",
+    "enumLiterals": [
+      {"intId": 0, "name": "serviceBrake"},
+      {"intId": 1, "name": "emergencyBrake"}
+    ]
+  },
+  {
+    "name": "VoltageType",
+    "info": "List defining Voltage types",
+    "see": "https://linked.ec-dataplatform.eu/describe/?url=http://data.europa.eu/949/concepts/energy-supply-systems/EnergySupplySystems",
+    "enumLiterals": [
+      {"intId": 0, "name": "vtNotFitted", "info": "Line not fitted (not electrified) with any traction system"},
+      {"intId": 1, "name": "vtAC25kv50Hz", "info": "AC 25kV 50Hz", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/energy-supply-systems/rinf/AC10"}},
+      {"intId": 2, "name": "vtAC15kv16_7Hz", "info": "AC 15kV 16.7Hz", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/energy-supply-systems/rinf/AC20"}},
+      {"intId": 3, "name": "vtDC3kv", "info": "DC 3kV", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/energy-supply-systems/rinf/DC30"}},
+      {"intId": 4, "name": "vtDC1_5kv", "info": "DC 1.5kV", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/energy-supply-systems/rinf/DC40"}},
+      {"intId": 5, "name": "vtDC600v", "info": "DC 600V", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/energy-supply-systems/rinf/DC80"}},
+      {"intId": 6, "name": "vtDC650v", "info": "DC 650V", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/energy-supply-systems/rinf/DC70"}},
+      {"intId": 7, "name": "vtDC750v", "info": "DC 750V", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/energy-supply-systems/rinf/DC60"}},
+      {"intId": 8, "name": "vtDC850v", "info": "DC 850V", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/energy-supply-systems/rinf/DC90"}}
+    ]
+  },
+  {
+    "name": "TrackGaugeType",
+    "enumLiterals": [
+      {"intId": 0, "name": "tgUnknown", "info": "Line not fitted (not electrified) with any traction system"},
+      {"intId": 1, "name": "tg750", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/nominal-track-gauges/rinf/10"}},
+      {"intId": 2, "name": "tg1000mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/nominal-track-gauges/rinf/20"}},
+      {"intId": 3, "name": "tg1435mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/nominal-track-gauges/rinf/30"}},
+      {"intId": 4, "name": "tg1520mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/nominal-track-gauges/rinf/40"}},
+      {"intId": 5, "name": "tg1524mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/nominal-track-gauges/rinf/50"}},
+      {"intId": 6, "name": "tg1600mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/nominal-track-gauges/rinf/60"}},
+      {"intId": 7, "name": "tg1680mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/nominal-track-gauges/rinf/70"}}
+    ]
+  },
+  {
+    "name": "TrainEndApplicability",
+    "info": "List of train end applicability types",
+    "enumLiterals": [
+      {"intId": 0, "name": "lengthDelay", "info": "Train length delay on validity end point of profile element"},
+      {"intId": 1, "name": "noLengthDelay", "info": "No Train length delay on validity end point of profile element."}
+    ]
+  },
+  {
+    "name": "OtherSpecificStaticSpeedProfileCategory",
+    "info": "List of other specific static speed profile categories ",
+    "enumLiterals": [
+      {"intId": 0, "name": "SSSP_freightTrainP", "info": "Other SSSP applies to Freight train of type P"},
+      {"intId": 1, "name": "SSSP_freightTrainG", "info": "Other SSSP applies to Freight train of type G"},
+      {"intId": 2, "name": "SSSP_passengerTrain", "info": "Other SSSP applies to Passenger train"}
+    ]
+  },
+  {
+    "name": "CantDeficiencyCategory",
+    "info": "List of cant deficiency speed profile categories",
+    "enumLiterals": [
+      {"intId": 0, "name": "CD_Undefined", "info": "annotates inactive cant deficiency"},
+      {"intId": 1, "name": "CD_80mm", "info": "Applicable for trains capable of compensating cant deficiency of 80mm"},
+      {"intId": 2, "name": "CD_100mm", "info": "Applicable for trains capable of compensating cant deficiency of 100mm"},
+      {"intId": 3, "name": "CD_130mm", "info": "Applicable for trains capable of compensating cant deficiency of 130mm"},
+      {"intId": 4, "name": "CD_150mm", "info": "Applicable for trains capable of compensating cant deficiency of 150mm"},
+      {"intId": 5, "name": "CD_165mm", "info": "Applicable for trains capable of compensating cant deficiency of 165mm"},
+      {"intId": 6, "name": "CD_180mm", "info": "Applicable for trains capable of compensating cant deficiency of 180mm"},
+      {"intId": 7, "name": "CD_210mm", "info": "Applicable for trains capable of compensating cant deficiency of 210mm"},
+      {"intId": 8, "name": "CD_225mm", "info": "Applicable for trains capable of compensating cant deficiency of 225mm"},
+      {"intId": 9, "name": "CD_245mm", "info": "Applicable for trains capable of compensating cant deficiency of 245mm"},
+      {"intId": 10, "name": "CD_275mm", "info": "Applicable for trains capable of compensating cant deficiency of 275mm"},
+      {"intId": 11, "name": "CD_300mm", "info": "Applicable for trains capable of compensating cant deficiency of 300mm"}
+    ]
+  },
+  {
+    "name": "AxleLoadCategory",
+    "info": "List of axle load speed profile categories",
+    "enumLiterals": [
+      {"intId": 0, "name": "AL_A", "info": "Applicable for trains falling under axle load category A"},
+      {"intId": 1, "name": "AL_HS17", "info": "Applicable for trains falling under axle load category HS17"},
+      {"intId": 2, "name": "AL_B1", "info": "Applicable for trains falling under axle load category B1"},
+      {"intId": 3, "name": "AL_C2", "info": "Applicable for trains falling under axle load category C2"},
+      {"intId": 4, "name": "AL_C3", "info": "Applicable for trains falling under axle load category C3"},
+      {"intId": 5, "name": "AL_C4", "info": "Applicable for trains falling under axle load category C4"},
+      {"intId": 6, "name": "AL_D2", "info": "Applicable for trains falling under axle load category D2"},
+      {"intId": 7, "name": "AL_D3", "info": "Applicable for trains falling under axle load category D3"},
+      {"intId": 8, "name": "AL_D4", "info": "Applicable for trains falling under axle load category D4"},
+      {"intId": 9, "name": "AL_D4XL", "info": "Applicable for trains falling under axle load category D4XL"},
+      {"intId": 10, "name": "AL_E4", "info": "Applicable for trains falling under axle load category E4"},
+      {"intId": 11, "name": "AL_E5", "info": "Applicable for trains falling under axle load category E5"}
+    ]
+  },
+  {
+    "name": "TrainSize",
+    "info": "List defining different train sizes",
+    "enumLiterals": [
+      {"intId": 0, "name": "undefinedTrainSize"},
+      {"intId": 1, "name": "shortTrain"},
+      {"intId": 2, "name": "halfTrain"},
+      {"intId": 3, "name": "fullTrain"}
+    ]
+  },
+  {
+    "name": "TrainLoadType",
+    "enumLiterals": [
+      {"intId": 0, "name": "passengerTrain"},
+      {"intId": 1, "name": "freightTrain"},
+      {"intId": 2, "name": "anyTrain"}
+    ]
+  },
+  {
+    "name": "DoorOpeningSide",
+    "enumLiterals": [
+      {"intId": 0, "name": "noSide"},
+      {"intId": 1, "name": "leftSide"},
+      {"intId": 2, "name": "rightSide"},
+      {"intId": 3, "name": "bothSides"}
+    ]
+  },
+  {
+    "name": "PlatformHeight",
+    "info": "List of nominal height of platform above rail level (refer to TSI infrastructure)",
+    "enumLiterals": [
+      {"intId": 0, "name": "PH_200mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/platform-heights/rinf/60"}},
+      {"intId": 1, "name": "PH_300_380mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/platform-heights/rinf/50"}},
+      {"intId": 2, "name": "PH_550mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/platform-heights/rinf/30"}},
+      {"intId": 3, "name": "PH_580mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/platform-heights/rinf/70"}},
+      {"intId": 4, "name": "PH_680mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/platform-heights/rinf/80"}},
+      {"intId": 5, "name": "PH_685mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/platform-heights/rinf/90"}},
+      {"intId": 6, "name": "PH_730mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/platform-heights/rinf/100"}},
+      {"intId": 7, "name": "PH_760mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/platform-heights/rinf/40"}},
+      {"intId": 8, "name": "PH_840mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/platform-heights/rinf/110"}},
+      {"intId": 9, "name": "PH_900mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/platform-heights/rinf/120"}},
+      {"intId": 10, "name": "PH_915mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/platform-heights/rinf/130"}},
+      {"intId": 11, "name": "PH_920mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/platform-heights/rinf/140"}},
+      {"intId": 12, "name": "PH_960mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/platform-heights/rinf/150"}},
+      {"intId": 13, "name": "PH_1100mm", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/platform-heights/rinf/160"}}
+    ]
+  },
+  {
+    "name": "OPType",
+    "info": "List of types for Operational Point",
+    "enumLiterals": [
+      {"intId": 0, "name": "station", "info": "station with functions, supports international and/or national railway traffic", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/op-types/rinf/10"}},
+      {"intId": 1, "name": "depot", "info": "group of tracks used by depot or workshop for maintenance", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/op-types/rinf/50"}},
+      {"intId": 2, "name": "siding", "info": "operational point that describes the embranchment located on the main line that leads to the siding", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/op-types/rinf/130"}},
+      {"intId": 3, "name": "trainTechnicalServices", "info": "group of tracks for servicing trains (parking, washing, etc.)", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/op-types/rinf/60"}},
+      {"intId": 4, "name": "shuntingYard", "info": "group of tracks used for shunting trains, mostly related to freight traffic", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/op-types/rinf/100"}},
+      {"intId": 5, "name": "borderPoint", "info": "located in the point where a border between Major States or IMs meets a railway line", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/op-types/rinf/90"}},
+      {"intId": 6, "name": "technicalChange", "info": "to describe a change of CCS or a type of contact line or a Gauge changeover facility", "ontology": {"owl:sameAs": "http://data.europa.eu/949/concepts/op-types/rinf/110"}}
+    ]
+  },
+  {
+    "name": "TrainDetectorType",
+    "info": "List defining different train detection systems",
+    "enumLiterals": [
+      {"intId": 0, "name": "axleCounter"},
+      {"intId": 1, "name": "trackCircuitBorder"}
+    ]
+  }
+  ],
+  "structs": [
+  {
+    "name": "TrackEdge",
+    "info": "A track edge is an uninterrupted stretch of railway track, without divergence or convergence.",
+    "see": "http://ontorail.org/rsm12/Common/Topology/LinearElementWithLength",
+    "attrs": [
+      {"intId": 1, "name": "trackEdgeId", "dataType": "string", "key": "global",
+       "info": "Identity of the track edge, needed for referencing"},
+      {"intId": 2, "name": "trackEdgeLength", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "Distance along the TrackEdge's track centre line. "}
+    ]
+  },
+  {
+    "name": "TrackEdgeLink",
+    "info": "Defines a relation between two track edges along which a train can run.",
+    "see": "http://ontorail.org/rsm12/Common/Topology/PositionedRelation",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
+       "info": "Identity for referencing, e.g. by points and crossings"},
+      {"intId": 2, "name": "trackEdgeA", "reference": "TrackEdge",
+       "info": "Connects to track edge A"},
+      {"intId": 3, "name": "trackEdgeB", "reference": "TrackEdge",
+       "info": "Connects to track edge B"},
+      {"intId": 4, "name": "startOfA", "dataType": "boolean",
+       "info": "True when linked to the start of track edge A, false when to the end"},
+      {"intId": 5, "name": "startOfB", "dataType": "boolean",
+       "info": "True when linked to the start of track edge B, false when to the end"}
+    ]
+  },
+  {
+    "name": "TopoArea",
+    "info": "Defines a container for rail network topology",
+    "attrs": [
+      {"intId": 1, "name": "topoAreaId", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "versionTimestamp", "dataType": "timestamp",
+       "info": "valid since timestamp"},
+      {"intId": 3, "name": "trackEdges", "composition": "TrackEdge", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 4, "name": "trackEdgeLinks", "composition": "TrackEdgeLink", "multiplicity": "0..*", "sortedByKey": true}
+    ]
+  },
+  {
+    "name": "TrackEdgePoint",
+    "info": "Defines a non-directed spot location (without spatial expansion) on a Track Edge",
+    "attrs": [
+      {"intId": 1, "name": "trackEdge", "reference": "TrackEdge",
+       "info": "is positioned on track edge"},
+      {"intId": 2, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "position on the associated Track Edge"}
+    ]
+  },
+  {
+    "name": "DirTrackEdgePoint",
+    "info": "Defines a directed spot location (without spatial expansion) on a Track Edge",
+    "attrs": [
+      {"intId": 1, "name": "trackEdge", "reference": "TrackEdge",
+       "info": "is positioned on track edge"},
+      {"intId": 2, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "position on the associated Track Edge"},
+      {"intId": 3, "name": "sameDir", "dataType": "boolean",
+       "info": "true: active in same direction as trackEdge, false: active in opposite direction"}
+    ]
+  },
+  {
+    "name": "TrackEdgeSection",
+    "info": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+    "attrs": [
+      {"intId": 1, "name": "trackEdge", "reference": "TrackEdge",
+       "info": "is part on track edge"},
+      {"intId": 2, "name": "skipFromStart", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "ignore section [0..skipFromStart]."},
+      {"intId": 3, "name": "skipFromEnd", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "ignore section [skipFromEnd, length]."}
+    ]
+  },
+  {
+    "name": "DirTrackEdgeSection",
+    "info": "Defines a directed linear object (with a linear extension) located on a Track Edge",
+    "attrs": [
+      {"intId": 1, "name": "trackEdge", "reference": "TrackEdge",
+       "info": "is part on track edge"},
+      {"intId": 2, "name": "skipFromStart", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "ignore section [0..skipFromStart]."},
+      {"intId": 3, "name": "skipFromEnd", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "ignore section [skipFromEnd, length]."},
+      {"intId": 4, "name": "direction", "enumType": "Direction"}
+    ]
+  },
+  {
+    "name": "DirTrackEdge",
+    "attrs": [
+      {"intId": 1, "name": "trackEdge", "reference": "TrackEdge"},
+      {"intId": 2, "name": "sameDir", "dataType": "boolean",
+       "info": "usage direction of the TrackEdge: true=nominal==sameAsTrackEdge, false=reverse/end2start"}
+    ]
+  },
+  {
+    "name": "LinkedPath",
+    "info": "Defines a linked path on the topology",
+    "attrs": [
+      {"intId": 1, "name": "dirTrackEdges", "composition": "DirTrackEdge", "multiplicity": "1..*", "sortedByKey": false,
+       "info": "must be linked correctly related to TrackEdgeLink"},
+      {"intId": 2, "name": "skipFromPathStart", "dataType": "uint32", "unit": "m", "exp": -3},
+      {"intId": 3, "name": "skipFromPathEnd", "dataType": "uint32", "unit": "m", "exp": -3}
+    ]
+  },
+  {
+    "name": "GeometryArea",
+    "attrs": [
+      {"intId": 1, "name": "geometryAreaId", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea"},
+      {"intId": 2, "name": "versionTimestamp", "dataType": "timestamp",
+       "info": "valid since timestamp, must be >= topoArea.timestamp to represent a valid area"},
+      {"intId": 3, "name": "alignment3d", "dataType": "boolean",
+       "info": "if true, all positions and length calculated on 3d line. if false - on 2d projection"},
+      {"intId": 4, "name": "trackEdgeGeometries", "composition": "TrackEdgeGeometry", "multiplicity": "0..*", "sortedByKey": true}
+    ]
+  },
+  {
+    "name": "TrackEdgeGeometry",
+    "info": "Defines the geometry of the track edge centre line as a list of parametrised curves. The geometry is smooth; no discontinuities in azimuth or inclination.",
+    "see": "http://ontorail.org/src/RSM/rsm12e/Common/Geometry",
+    "attrs": [
+      {"intId": 1, "name": "trackEdgeGeometryId", "dataType": "string", "key": "global", "sameKeyAs": "TrackEdge",
+       "info": "Geometry-layer of the TrackEdge-class uses the same id as the physical one."},
+      {"intId": 2, "name": "horizontalAlignment", "composition": "HorizontalSegment", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Sequence of geometric primitives, i.e. arc, line or clothoid, that compose this track geometry"},
+      {"intId": 3, "name": "verticalAlignment", "composition": "VerticalSegment", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Sequence of geometric primitives, i.e. arc, line or clothoid, that compose this track geometry"},
+      {"intId": 4, "name": "cantPoints", "composition": "CantPoint", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "trackEdge must be completely defined, at least at beginning and end. Empty means undefined"}
+    ]
+  },
+  {
+    "name": "HorizontalSegment",
+    "info": "A curvi-linear geometric primitive, mathematically represents a horizontal segment of the centre line of a railway track",
+    "see": "http://ontorail.org/src/RSM/rsm12e/Common/HorizontalAlignmentSegment",
+    "union": true,
+    "attrs": [
+      {"intId": 1, "name": "horizontalSegmentLine", "composition": "HorizontalLine"},
+      {"intId": 2, "name": "horizontalSegmentArc", "composition": "HorizontalArc"},
+      {"intId": 3, "name": "transition", "composition": "HorizontalTransition"}
+    ]
+  },
+  {
+    "name": "HorizontalLine",
+    "info": "Geometric primitive for a horizontal linear segment",
+    "see": "http://ontorail.org/src/RSM/rsm12e/Common/HorizontalSegmentLine",
+    "attrs": [
+      {"intId": 1, "name": "geometricPos", "dataType": "double", "unit": "m",
+       "info": "Position, i.e. distance-along on the associated track edge, where this geometric section starts. The length of curve = p[n+1]-p[n]"},
+      {"intId": 2, "name": "azimuth", "dataType": "double", "unit": "degree", "range": "0..360"}
+    ]
+  },
+  {
+    "name": "HorizontalArc",
+    "info": "Geometric primitive for a horizontal arc of circle",
+    "see": "http://ontorail.org/src/RSM/rsm12e/Common/HorizontalSegmentArc",
+    "attrs": [
+      {"intId": 1, "name": "geometricPos", "dataType": "double", "unit": "m",
+       "info": "Position, i.e. distance-along on the associated track edge, where this geometric section starts. The length of the curve = p[n+1]-p[n]"},
+      {"intId": 2, "name": "azimuth", "dataType": "double", "unit": "degree", "range": "0..360"},
+      {"intId": 3, "name": "radius", "dataType": "double", "unit": "m",
+       "info": "radius at p, negative-counter-clockwise/right-curve, positive-clockwise/left-curve"}
+    ]
+  },
+  {
+    "name": "HorizontalTransition",
+    "info": "Geometric primitive for a horizontal transition curve, a clothoid.",
+    "see": "http://ontorail.org/src/RSM/rsm12e/Common/HorizontalSegmentTransition",
+    "attrs": [
+      {"intId": 1, "name": "geometricPos", "dataType": "double", "unit": "m",
+       "info": "Position, i.e. distance-along on the associated track edge, where this geometric section starts. The length of the curve = p[n+1]-p[n]"},
+      {"intId": 2, "name": "azimuth", "dataType": "double", "unit": "degree", "range": "0..360",
+       "info": "The azimuth at p, i.e. bearing measured clockwise with respect to geographic north"},
+      {"intId": 3, "name": "radius", "dataType": "double", "unit": "m",
+       "info": "radius at p, negative-counter-clockwise/right-curve, positive-clockwise/left-curve"},
+      {"intId": 4, "name": "transitionType", "enumType": "TransitionType"}
+    ]
+  },
+  {
+    "name": "VerticalSegment",
+    "info": "A curvi-linear geometric primitive, mathematically represents a vertical segment of the centre line of a railway track",
+    "see": "http://ontorail.org/src/RSM/rsm12e/Common/VerticalAlignmentSegment",
+    "union": true,
+    "attrs": [
+      {"intId": 1, "name": "verticalSegmentLine", "composition": "VerticalLine"},
+      {"intId": 2, "name": "verticalSegmentArc", "composition": "VerticalArc"}
+    ]
+  },
+  {
+    "name": "VerticalLine",
+    "info": "Geometric primitive for vertical linear segment",
+    "see": "http://ontorail.org/src/RSM/rsm12e/Common/VerticalSegmentLine",
+    "attrs": [
+      {"intId": 1, "name": "geometricPos", "dataType": "double", "unit": "m",
+       "info": "Position, i.e. distance-along on the associated track edge, where this geometric section starts. The length of curve = p[n+1]-p[n]"},
+      {"intId": 2, "name": "slope", "dataType": "double", "unit": "permill",
+       "info": "The vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."}
+    ]
+  },
+  {
+    "name": "VerticalArc",
+    "info": "Geometric primitive for a vertical arc.",
+    "see": "http://ontorail.org/src/RSM/rsm12e/Common/VerticalSegmentArc",
+    "attrs": [
+      {"intId": 1, "name": "geometricPos", "dataType": "double", "unit": "m",
+       "info": "Position, i.e. distance-along on the associated track edge, where this geometric section starts. The length of curve = p[n+1]-p[n]"},
+      {"intId": 2, "name": "slope", "dataType": "double", "unit": "permill",
+       "info": "The vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."},
+      {"intId": 3, "name": "radius", "dataType": "double", "unit": "m",
+       "info": "Radius of the arc, negative-counter-clockwise/hill-curve, positive-clockwise/valley-curve"}
+    ]
+  },
+  {
+    "name": "CantPoint",
+    "info": "Cant at a given location on the track.",
+    "attrs": [
+      {"intId": 1, "name": "geometricPos", "dataType": "double", "unit": "m",
+       "info": "Position on the associated track edge"},
+      {"intId": 2, "name": "appliedCant", "dataType": "double", "unit": "m",
+       "info": "Height of the right rail minus the left rail. Right/left with respect to the direction of the track edge. Rollangle=(arcsin(cant/gauge)), gauge is distance between middle of the railheads, e.g. 1500mm for EU-standard gauge '1435mm'"}
+    ]
+  },
+  {
+    "name": "SampledGeometryArea",
+    "attrs": [
+      {"intId": 1, "name": "sampledGeometryAreaId", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea"},
+      {"intId": 2, "name": "versionTimestamp", "dataType": "timestamp",
+       "info": "valid since timestamp, must be >= topoArea.timestamp to be valid"},
+      {"intId": 3, "name": "sampledTrackEdgeGeometries", "composition": "SampledTrackEdgeGeometry", "multiplicity": "1..*", "sortedByKey": true}
+    ]
+  },
+  {
+    "name": "SampledTrackEdgeGeometry",
+    "attrs": [
+      {"intId": 1, "name": "sampledTrackEdgeGeometryId", "dataType": "string", "key": "global", "sameKeyAs": "TrackEdge",
+       "info": "it is a sampled-geometry layer of the TrackEdge class, therefore it uses the same id"},
+      {"intId": 2, "name": "slopes", "composition": "SlopeSamplePoint", "multiplicity": "1..*", "sortedByKey": false},
+      {"intId": 3, "name": "curves", "composition": "CurveSamplePoint", "multiplicity": "1..*", "sortedByKey": false},
+      {"intId": 4, "name": "cants", "composition": "CantSamplePoint", "multiplicity": "1..*", "sortedByKey": false}
+    ]
+  },
+  {
+    "name": "SlopeSamplePoint",
+    "info": "Slope (gradient) of the track at a given location on the track.",
+    "see": "http://data.europa.eu/949/gradientProfile",
+    "attrs": [
+      {"intId": 1, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "position on the associated TrackEdge"},
+      {"intId": 2, "name": "pointSlope", "dataType": "int32", "unit": "permill", "exp": -1,
+       "info": "The value is valid from the sample point until the next one along the trackEdge."}
+    ]
+  },
+  {
+    "name": "CantSamplePoint",
+    "info": "Cant(superelevation) of the track at a given location on the track.",
+    "attrs": [
+      {"intId": 1, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "position on the associated TrackEdge"},
+      {"intId": 2, "name": "cant", "dataType": "int32", "unit": "m", "exp": -3,
+       "info": "Defines appliedCant as the Height of the right rail minus the left rail. Right/left with respect to the direction of the track edge. Rollangle=(arcsin(cant/gauge), gauge is distance between centers of rail-heads, e.g. 1500mm for EU-standard gauge."}
+    ]
+  },
+  {
+    "name": "CurveSamplePoint",
+    "info": "Curve (radius) of the track at a given location on the track.",
+    "attrs": [
+      {"intId": 1, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "position on the associated TrackEdge"},
+      {"intId": 2, "name": "curveRadius", "dataType": "int32", "unit": "m", "exp": -3,
+       "info": "Radius at position p. Zero for infinite (straight line). The value is valid from the sample point until the next one along the trackEdge. Negative: curve to the left, positive - to the right."}
+    ]
+  },
+  {
+    "name": "SimplePoint",
+    "info": "Defines the physical track asset Simple Point",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "reversalTime", "dataType": "uint32", "unit": "s", "exp": -1,
+       "info": "Defines the maximum time to switch the point from one position to the other"},
+      {"intId": 3, "name": "pointLeft", "reference": "TrackEdgeLink",
+       "info": "Track Edge Link referencing the left side of the point in the facing direction of the simple point"},
+      {"intId": 4, "name": "pointRight", "reference": "TrackEdgeLink",
+       "info": "Track Edge Link referencing the right side of the point in the facing direction of the simple point"}
+    ]
+  },
+  {
+    "name": "Crossing",
+    "info": "Defines the physical track asset Crossing without possibility to switch between two track edges",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "trackEdgePoints", "composition": "TrackEdgePoint", "multiplicity": "2..2", "sortedByKey": false,
+       "info": "is located on two trackEdges. In case of crossing of more than two trackEdges use several Crossing-Functional-Objects"},
+      {"intId": 3, "name": "isSwitchable", "dataType": "boolean",
+       "info": "True: If the crossing is switchable ; False: If the crossing is not switchable ;https://commons.wikimedia.org/wiki/Category:Switched_diamond_crossings"}
+    ]
+  },
+  {
+    "name": "SlipCrossing",
+    "info": "Defines the physical track asset Slip Crossing ; 2 instances simple point define a single slip crossing and 4 instances of simple point defined a double slip crossing ; Reversal time is the maximum of reversal times of simple points",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "simplePoints", "reference": "SimplePoint", "multiplicity": "2..4", "sortedByKey": false,
+       "info": "Consists of simple points"},
+      {"intId": 3, "name": "crossing", "reference": "Crossing",
+       "info": "Consists of crossing"}
+    ]
+  },
+  {
+    "name": "Derailer",
+    "info": "Defines the physical track asset Derailer",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "trackEdge", "reference": "TrackEdge",
+       "info": "is located on the track edge point"},
+      {"intId": 3, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "position on TrackEdge measured from start"},
+      {"intId": 4, "name": "sameDir", "dataType": "boolean",
+       "info": "true: active for trains moving from start of the TrackEdge to its end, false: active for opposite direction."},
+      {"intId": 5, "name": "reversalTime", "dataType": "uint32", "unit": "s", "exp": -1,
+       "info": "Defines the time in seconds to switch the point from one position to the other ; 0 means unknown"},
+      {"intId": 6, "name": "derailToRight", "dataType": "boolean",
+       "info": "if false = derailToLeft, the side at which the train will be derailed"}
+    ]
+  },
+
+  {
+    "name": "BaliseGroup",
+    "info": "Defines a technical device group on the railway trackbed.",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "nidBG", "dataType": "uint32"},
+      {"intId": 3, "name": "nidC", "dataType": "uint32"},
+      {"intId": 4, "name": "balises", "composition": "Balise", "multiplicity": "1..8", "sortedByKey": false,
+       "info": "Defines the balises within the balise group. ETCS-positionInGroup is equal to the position this array"},
+      {"intId": 5, "name": "bgFunction", "enumType": "BaliseGroupFunction",
+       "info": "to be clarified, if derivable from baliseTelegram"}
+    ]
+  },
+  {
+    "name": "Balise",
+    "info": "Defines a technical device on the railway trackbed.",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "trackEdge", "reference": "TrackEdge",
+       "info": "is located on the track edge point"},
+      {"intId": 3, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "position on TrackEdge measured from start"}
+    ]
+  },
+  {
+    "name": "PropertiesArea",
+    "info": "the object itself contains default-values for the area. Exceptions are in trackConditions etc.",
+    "attrs": [
+      {"intId": 1, "name": "propertiesAreaId", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea"},
+      {"intId": 2, "name": "versionTimestamp", "dataType": "timestamp",
+       "info": "valid since timestamp, must be >= topoArea.timestsamp to represent a valid propertyArea"},
+      {"intId": 3, "name": "gauge", "enumType": "TrackGaugeType",
+       "info": "default gauge in the area. Deviations are covered in trackEdgeGauges"},
+      {"intId": 4, "name": "loadingGaugeTypes", "enumType": "LoadingGaugeType", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "list of supported loading gauges per default"},
+      {"intId": 5, "name": "defaultVoltage", "enumType": "VoltageType"},
+      {"intId": 6, "name": "defaultMaxCurrent", "dataType": "uint32", "unit": "A",
+       "info": "used in ATO & ETCS.packet40"},
+      {"intId": 7, "name": "teSpeedProfiles", "composition": "TrackEdgeSpeedProfile", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 8, "name": "trackEdgeGauges", "composition": "TrackEdgeGauge", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "exceptions from default defined in gauge-attribute"},
+      {"intId": 9, "name": "trackEdgeLoadingGauges", "composition": "TrackEdgeLoadingGauge", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "exceptions from default attributes"},
+      {"intId": 10, "name": "trackConditions", "composition": "TrackCondition", "multiplicity": "0..*", "sortedByKey": false},
+      {"intId": 11, "name": "currentLimitations", "composition": "CurrentLimitation", "multiplicity": "0..*", "sortedByKey": false},
+      {"intId": 12, "name": "permittedBrakingDistances", "composition": "PermittedBrakingDistance", "multiplicity": "0..*", "sortedByKey": false},
+      {"intId": 13, "name": "tractionSystems", "composition": "TractionSystem", "multiplicity": "0..*", "sortedByKey": false}
+    ]
+  },
+  {
+    "name": "TrackEdgeGauge",
+    "info": "inner distance between two rails, e.g. 1432 for EU-standard-rails",
+    "attrs": [
+      {"intId": 1, "name": "trackEdgeSections", "composition": "TrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false},
+      {"intId": 2, "name": "gauge", "enumType": "TrackGaugeType"}
+    ]
+  },
+  {
+    "name": "TrackEdgeLoadingGauge",
+    "attrs": [
+      {"intId": 1, "name": "trackEdgeSections", "composition": "TrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false},
+      {"intId": 2, "name": "loadingGaugeType", "enumType": "LoadingGaugeType"}
+    ]
+  },
+  {
+    "name": "TrackCondition",
+    "info": "Defines the TrackConditions for a section of track",
+    "see": "http://data.europa.eu/949/etcsTransmittedTrackConditions",
+    "attrs": [
+      {"intId": 1, "name": "trackEdgeSections", "composition": "TrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false},
+      {"intId": 2, "name": "conditionType", "enumType": "ConditionType"}
+    ]
+  },
+  {
+    "name": "CurrentLimitation",
+    "info": "Defines max current for a list of track sections",
+    "attrs": [
+      {"intId": 1, "name": "trackEdgeSections", "composition": "TrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false},
+      {"intId": 2, "name": "maxCurrent", "dataType": "uint32", "unit": "A"}
+    ]
+  },
+  {
+    "name": "PermittedBrakingDistance",
+    "info": "Defines max allowed braking distance for a list of track sections",
+    "attrs": [
+      {"intId": 1, "name": "trackEdgeSections", "composition": "TrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false},
+      {"intId": 2, "name": "pbdDist", "dataType": "uint32", "unit": "m"},
+      {"intId": 3, "name": "brakeType", "enumType": "BrakeType"},
+      {"intId": 4, "name": "pbdGradient", "dataType": "int32", "unit": "permill", "exp": -1},
+      {"intId": 5, "name": "sameDir", "dataType": "boolean",
+       "info": "true: active for trains moving from start of the TrackEdge to its end, false: active for opposite direction."}
+    ]
+  },
+  {
+    "name": "TractionSystem",
+    "info": "Defines the equipped traction system on the track",
+    "attrs": [
+      {"intId": 1, "name": "trackEdgeSections", "composition": "TrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false},
+      {"intId": 2, "name": "voltageType", "enumType": "VoltageType"}
+    ]
+  },
+  {
+    "name": "TrackUsageArea",
+    "info": "Preferred usage specification, most usable for TMS and planning",
+    "attrs": [
+      {"intId": 1, "name": "trackUsageAreaId", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea"},
+      {"intId": 2, "name": "versionTimestamp", "dataType": "timestamp",
+       "info": "valid since timestamp, must be >= topoArea.versionTimestamp to represent a valid TrackUsageArea"},
+      {"intId": 3, "name": "secondaryTracks", "reference": "TrackEdge", "multiplicity": "0..*", "sortedByKey": true,
+       "info": "all tracks except 'shuntingTracks' and 'secondaryTracks' are 'mainTracks'"},
+      {"intId": 4, "name": "shuntingTracks", "reference": "TrackEdge", "multiplicity": "0..*", "sortedByKey": true,
+       "info": "all tracks except 'shuntingTracks' and 'secondaryTracks' are 'mainTracks'"},
+      {"intId": 5, "name": "preferredSameDir", "reference": "TrackEdge", "multiplicity": "0..*", "sortedByKey": true,
+       "info": "track edges with preferred direction identical to the TrackEdge-Direction"},
+      {"intId": 6, "name": "preferredOppositeDir", "reference": "TrackEdge", "multiplicity": "0..*", "sortedByKey": true,
+       "info": "track edges with preferred direction opposite to the TrackEdge-Direction"}
+    ]
+  },
+  {
+    "name": "TrackEdgeSpeedProfile",
+    "info": "Defines the permitted speeds for a Track edge in both directions",
+    "attrs": [
+      {"intId": 1, "name": "trackEdgeSpeedProfileId", "dataType": "string", "key": "global", "sameKeyAs": "TrackEdge"},
+      {"intId": 2, "name": "sameDirProfile", "composition": "SpeedProfile",
+       "info": "speed profile valid in the same direction as the trackEdge"},
+      {"intId": 3, "name": "oppositeDirProfile", "composition": "SpeedProfile", "multiplicity": "0..1",
+       "info": "valid in the opposite direction as the TrackEdge. Skip if the same in both directions."}
+    ]
+  },
+  {
+    "name": "SpeedProfile",
+    "attrs": [
+      {"intId": 1, "name": "staticSpeedProfile", "composition": "StaticSpeedLimit", "multiplicity": "1..*", "sortedByKey": false},
+      {"intId": 2, "name": "axleLoadSpeedProfiles", "composition": "AxleLoadSpeedProfile", "multiplicity": "0..*", "sortedByKey": false}
+    ]
+  },
+  {
+    "name": "StaticSpeedLimit",
+    "info": "Defines the static speed profile for a section of track",
+    "attrs": [
+      {"intId": 1, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "position on the associated TrackEdge"},
+      {"intId": 2, "name": "speed", "dataType": "uint32", "unit": "km/h",
+       "info": "Defines the applicable speed for the section of track ; Resolution min 5 kmph"},
+      {"intId": 3, "name": "specificStaticSpeedLimits", "composition": "SpecificStaticSpeedLimit", "multiplicity": "0..*", "sortedByKey": false}
+    ]
+  },
+  {
+    "name": "SpecificStaticSpeedLimit",
+    "info": "Defines the specific static speed profile for a section of track",
+    "attrs": [
+      {"intId": 1, "name": "speed", "dataType": "uint32", "unit": "km/h",
+       "info": "Defines the applicablespeed for the section of track ; Resolution min 5 kmph"},
+      {"intId": 2, "name": "specificLimitCategory", "composition": "SpeedLimitCategory"}
+    ]
+  },
+  {
+    "name": "SpeedLimitCategory",
+    "union": true,
+    "attrs": [
+      {"intId": 1, "name": "otherCategoryReplacesCantDeficiencySSP", "enumType": "OtherSpecificStaticSpeedProfileCategory"},
+      {"intId": 2, "name": "otherCategoryDoesNotReplaceCantDeficiencySSP", "enumType": "OtherSpecificStaticSpeedProfileCategory"},
+      {"intId": 3, "name": "cantDeficiencyCategory", "enumType": "CantDeficiencyCategory"}
+    ]
+  },
+  {
+    "name": "AxleLoadSpeedProfile",
+    "info": "Defines the axle load speed profile for a section of track",
+    "attrs": [
+      {"intId": 1, "name": "startPos", "dataType": "uint32", "unit": "m", "exp": -3},
+      {"intId": 2, "name": "endPos", "dataType": "uint32", "unit": "m", "exp": -3},
+      {"intId": 3, "name": "speed", "dataType": "uint32", "unit": "km/h",
+       "info": "Defines the applicablespeed for the section of track ; Resolution min 5 kmph"},
+      {"intId": 4, "name": "axleLoadCategory", "enumType": "AxleLoadCategory",
+       "info": "value indicating the suitable Axle load category."}
+    ]
+  },
+  {
+    "name": "ETCSMarker",
+    "info": "Defines the ETCS Marker Boards ",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "trackEdge", "reference": "TrackEdge",
+       "info": "is located on the track edge at point in pos-attribute"},
+      {"intId": 3, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "position on TrackEdge measured from start"},
+      {"intId": 4, "name": "sameDir", "dataType": "boolean",
+       "info": "if true - is applicable in the same direction as TrackEdge, false - in opposite direction as TrackEdge"},
+      {"intId": 5, "name": "markerFunctionStop", "dataType": "boolean",
+       "info": "true=stop, false=location (when the ETCS marker is a location marker)"}
+    ]
+  },
+  {
+    "name": "StopLocation",
+    "info": "Defines the stop locations",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "trackEdge", "reference": "TrackEdge",
+       "info": "is located on the track edge at point defined in pos-attr"},
+      {"intId": 3, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "position on TrackEdge measured from start"},
+      {"intId": 4, "name": "sameDir", "dataType": "boolean",
+       "info": "if true - is applicable in the same direction as TrackEdge, false - in opposite direction as TrackEdge"},
+      {"intId": 5, "name": "stopTrainLimit", "composition": "StopTrainLimit", "multiplicity": "0..1"},
+      {"intId": 6, "name": "trainLoadType", "enumType": "TrainLoadType"},
+      {"intId": 7, "name": "doorOpeningSide", "enumType": "DoorOpeningSide"}
+    ]
+  },
+  {
+    "name": "StopTrainLimit",
+    "attrs": [
+      {"intId": 1, "name": "trainMaxLength", "dataType": "uint32", "unit": "m",
+       "info": "use zero if not defined"},
+      {"intId": 2, "name": "trainMaxAxles", "dataType": "uint32",
+       "info": "use zero if not defined"},
+      {"intId": 3, "name": "trainMaxWagons", "dataType": "uint32",
+       "info": "including Locomotives, use zero if not defined"},
+      {"intId": 4, "name": "trainMaxSize", "enumType": "TrainSize",
+       "info": "use undefinedTrainSize if not defined"}
+    ]
+  },
+  {
+    "name": "PlatformEdge",
+    "info": "Platform for the purpose of RINF is understood as a platform edge. A platform concerns only the part of the structure neighbouring to the track (interfaced with trains).",
+    "attrs": [
+      {"intId": 1, "name": "platformId", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "name", "dataType": "string", "multiplicity": "0..1",
+       "info": "User-friendly name used for communication with passengers/customers."},
+      {"intId": 3, "name": "linearLocation", "composition": "LinkedPath"},
+      {"intId": 4, "name": "stopLocations", "reference": "StopLocation", "multiplicity": "1..*", "sortedByKey": true,
+       "info": "add only, if stopLocation can be used on that PlatformEdge for passenger/freight exchange"},
+      {"intId": 5, "name": "height", "enumType": "PlatformHeight"}
+    ]
+  },
+  {
+    "name": "Platform",
+    "info": "Defines the container object platform",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "name", "dataType": "string", "multiplicity": "0..1",
+       "info": "User-friendly name used for communication with passengers/customers."},
+      {"intId": 3, "name": "platformEdges", "composition": "PlatformEdge", "multiplicity": "1..2", "sortedByKey": false}
+    ]
+  },
+  {
+    "name": "OperationalPoint",
+    "info": "An operational point (OP) means any location for train service operations, where train services may begin and end or change route, and where passenger or freight services may be provided; operational point also means any location at boundaries between Member States or infrastructure managers. In https://eur-lex.europa.eu/eli/reg_impl/2019/773/oj 2.1.2 Principal locations (stations, yards, junctions, freight terminals).",
+    "see": "http://data.europa.eu/949/OperationalPoint",
+    "attrs": [
+      {"intId": 1, "name": "uopid", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "opName", "dataType": "string", "multiplicity": "0..1",
+       "info": "User-friendly name, only if different from id"},
+      {"intId": 3, "name": "travelTimeMeasurementPoints", "composition": "TravelTimeMeasurementPoint", "multiplicity": "0..*", "sortedByKey": true,
+       "info": "used to measure/define timestamps for passing trains. Stopping-timingPoints can be found via platforms.platformEdges.stopLocations and timingPoint.stopLocation"},
+      {"intId": 4, "name": "operationalPointType", "enumType": "OPType",
+       "info": "Defines the type of Operational Point"},
+      {"intId": 5, "name": "platforms", "composition": "Platform", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "the sequence of platforms is according to the real location, so neighbours are the same in array and reality"}
+    ]
+  },
+  {
+    "name": "TravelTimeMeasurementPoint",
+    "info": "normally the passing time through a OperationalPoint is measured at the middle of it",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "local"},
+      {"intId": 2, "name": "trackEdge", "reference": "TrackEdge"},
+      {"intId": 3, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3}
+    ]
+  },
+  {
+    "name": "TimingPoint",
+    "info": "Defines a fixed point on the infrastructure",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "trackEdge", "reference": "TrackEdge",
+       "info": "is located on the track edge point"},
+      {"intId": 3, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "position on TrackEdge measured from start. The value depends on position-uncertainty of the train after last balise, therefore it can be different from activeObject.pos"},
+      {"intId": 4, "name": "activeObject", "composition": "TPActiveObject"}
+    ]
+  },
+  {
+    "name": "TPActiveObject",
+    "info": "A functional object infront of which a TimingPoint is located and active",
+    "union": true,
+    "attrs": [
+      {"intId": 1, "name": "etcsMarker", "reference": "ETCSMarker"},
+      {"intId": 2, "name": "stopLocation", "reference": "StopLocation"},
+      {"intId": 3, "name": "timeMeasurePoint", "reference": "TravelTimeMeasurementPoint"}
+    ]
+  },
+  {
+    "name": "Tunnel",
+    "info": "A railway tunnel is an excavation or a construction around the track provided to allow the railway to pass for example higher land, buildings or water.",
+    "attrs": [
+      {"intId": 1, "name": "tunnelIdentification", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "name", "dataType": "string", "multiplicity": "0..1",
+       "info": "User-friendly name, only if different from id"},
+      {"intId": 3, "name": "tunnelTubes", "composition": "TunnelTube", "multiplicity": "1..*", "sortedByKey": false}
+    ]
+  },
+  {
+    "name": "TunnelTube",
+    "info": "Defines the tunnels tubes within a tunnel. Main Use-Case identify emergency management with rescue into neighbour tube",
+    "attrs": [
+      {"intId": 1, "name": "trackEdgeSections", "composition": "TrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false,
+       "info": "defines list of track edge sections part of the tunnel"},
+      {"intId": 2, "name": "crossSection", "dataType": "uint32", "unit": "m2", "exp": -3,
+       "info": "for calculation of air-resistance ; Standard Cross section dimensions corresponding to ATO Tunnel types will be defined later"}
+    ]
+  },
+  {
+    "name": "Bridge",
+    "info": "Defines the civil infrastructure object bridge",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "name", "dataType": "string", "multiplicity": "0..1",
+       "info": "User-friendly name, only if different from id"},
+      {"intId": 3, "name": "trackEdgeSections", "composition": "TrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false}
+    ]
+  },
+  {
+    "name": "Underpass",
+    "info": "Defines the civil infrastructure object Underpass",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "name", "dataType": "string", "multiplicity": "0..1",
+       "info": "User-friendly name, only if different from id"},
+      {"intId": 3, "name": "trackEdgeSections", "composition": "TrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false}
+    ]
+  },
+  {
+    "name": "TvpSection",
+    "info": "Defines the train vacancy proving section",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "name", "dataType": "string", "multiplicity": "0..1",
+       "info": "User-friendly name, only if different from id"},
+      {"intId": 3, "name": "trackEdgeSections", "composition": "TrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false},
+      {"intId": 4, "name": "trainDetectors", "reference": "TrainDetector", "multiplicity": "0..*", "sortedByKey": false}
+    ]
+  },
+  {
+    "name": "TrainDetector",
+    "info": "Defines the train detector system for the train vacancy proving section",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "trackEdge", "reference": "TrackEdge",
+       "info": "is located on the track edge point"},
+      {"intId": 3, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "position on TrackEdge measured from start"},
+      {"intId": 4, "name": "detectorType", "enumType": "TrainDetectorType",
+       "info": "Defines the train detection system applicable for the TVPS"},
+      {"intId": 5, "name": "activeDir", "enumType": "Direction",
+       "info": "Applicable direction related to the TrackEdge"}
+    ]
+  },
+  {
+    "name": "LevelCrossing",
+    "info": "Defines the track asset level crossing",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "trackEdgeSections", "composition": "TrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false}
+    ]
+  },
+  {
+    "name": "NationalBorder",
+    "info": "A border point is used to separate the railway network due to different reasons. Typical examples are country borders, the change of owning infrastructure manager or the border of a station",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "trackEdge", "reference": "TrackEdge",
+       "info": "is located on the track edge point"},
+      {"intId": 3, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "position on TrackEdge measured from start"},
+      {"intId": 4, "name": "fromCountryCode", "dataType": "string",
+       "info": "starting part of the TrackEdge"},
+      {"intId": 5, "name": "toCountryCode", "dataType": "string",
+       "info": "ending part of the TrackEdge"}
+    ]
+  },
+  {
+    "name": "BufferStop",
+    "info": "Defines the object Buffer stop on the track",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "trackEdge", "reference": "TrackEdge",
+       "info": "is located on the track edge point"},
+      {"intId": 3, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
+       "info": "position on TrackEdge measured from start"},
+      {"intId": 4, "name": "sameDir", "dataType": "boolean",
+       "info": "if true - is applicable in the same direction as TrackEdge, false - in opposite direction as TrackEdge"},
+      {"intId": 5, "name": "isSwitchable", "dataType": "boolean",
+       "info": "true - if switchable ; false - if not switchable"}
+    ]
+  },
+  {
+    "name": "FunctionalArea",
+    "attrs": [
+      {"intId": 1, "name": "functionalAreaId", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea"},
+      {"intId": 2, "name": "versionTimestamp", "dataType": "timestamp",
+       "info": "valid since timestamp, must be >= topoArea.versionTimestamp to represent a valid functionalArea"},
+      {"intId": 3, "name": "opPoints", "composition": "OperationalPoint", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 4, "name": "simplePoints", "composition": "SimplePoint", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 5, "name": "slipCrossings", "composition": "SlipCrossing", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 6, "name": "derailers", "composition": "Derailer", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 7, "name": "crossings", "composition": "Crossing", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 8, "name": "trainDetectors", "composition": "TrainDetector", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 9, "name": "baliseGroups", "composition": "BaliseGroup", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 10, "name": "etcsMarkers", "composition": "ETCSMarker", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 11, "name": "stopLocations", "composition": "StopLocation", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 12, "name": "tunnels", "composition": "Tunnel", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 13, "name": "bridges", "composition": "Bridge", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 14, "name": "underpasses", "composition": "Underpass", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 15, "name": "tvps", "composition": "TvpSection", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 16, "name": "levelCrossings", "composition": "LevelCrossing", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 17, "name": "nationalBorders", "composition": "NationalBorder", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 18, "name": "bufferStops", "composition": "BufferStop", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 19, "name": "timingPoints", "composition": "TimingPoint", "multiplicity": "0..*", "sortedByKey": true}
+    ]
+  },
+  {
+    "name": "Infrastructure",
+    "attrs": [
+      {"intId": 1, "name": "topoAreas", "composition": "TopoArea", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 2, "name": "geometryAreas", "composition": "GeometryArea", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 3, "name": "sampledGeometryAreas", "composition": "SampledGeometryArea", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 4, "name": "functionalAreas", "composition": "FunctionalArea", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 5, "name": "propertiesAreas", "composition": "PropertiesArea", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 6, "name": "trackUsageAreas", "composition": "TrackUsageArea", "multiplicity": "0..*", "sortedByKey": true}
+    ]
+  }
+  ]
+}

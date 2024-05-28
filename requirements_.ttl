@@ -1,0 +1,4155 @@
+@prefix ccs: <http://data.europa.eu/949/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://data.europa.eu/949/hasAttribute
+ccs:hasAttribute rdf:type owl:AnnotationProperty .
+
+
+###  http://data.europa.eu/949/hasClass
+ccs:hasClass rdf:type owl:AnnotationProperty .
+
+
+###  http://data.europa.eu/949/hasEnum
+ccs:hasEnum rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://data.europa.eu/949/Attribute
+ccs:Attribute rdf:type owl:Class .
+
+
+###  http://data.europa.eu/949/Class
+ccs:Class rdf:type owl:Class .
+
+
+###  http://data.europa.eu/949/Domain
+ccs:Domain rdf:type owl:Class .
+
+
+###  http://data.europa.eu/949/Enum
+ccs:Enum rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://data.europa.eu/949/ATO
+ccs:ATO rdf:type owl:NamedIndividual ,
+                 ccs:Class ,
+                 ccs:Domain ;
+        ccs:hasAttribute ccs:atoAreaId ,
+                         ccs:atoAreas ,
+                         ccs:atoTimingPoint ,
+                         ccs:atotsContactInfo ,
+                         ccs:atotsContactInfoDir ,
+                         ccs:atotsNidC ,
+                         ccs:axleLoadCategory ,
+                         ccs:axleLoadSpeedProfiles ,
+                         ccs:baliseGroups ,
+                         ccs:balises ,
+                         ccs:byEmergencyBrake ,
+                         ccs:current ,
+                         ccs:currentChanges ,
+                         ccs:currentStart ,
+                         ccs:curve ,
+                         ccs:curveChanges ,
+                         ccs:curveStart ,
+                         ccs:dynamicBrakeForceInhibitions ,
+                         ccs:dynamicBrakeForceLimit ,
+                         ccs:eoaOffset ,
+                         ccs:gradient ,
+                         ccs:gradientChanges ,
+                         ccs:gradientStart ,
+                         ccs:gradientValue ,
+                         ccs:infraTimingPoint ,
+                         ccs:limitedDynamicBrakeForces ,
+                         ccs:name ,
+                         ccs:nidATOTS ,
+                         ccs:nidBG ,
+                         ccs:nidC ,
+                         ccs:nidCQualifier ,
+                         ccs:nidSP ,
+                         ccs:nidTP ,
+                         ccs:pEnd ,
+                         ccs:pNominal ,
+                         ccs:pReverse ,
+                         ccs:pStart ,
+                         ccs:permittedBrakingDistances ,
+                         ccs:platformAreas ,
+                         ccs:pos ,
+                         ccs:positionInGroup ,
+                         ccs:range ,
+                         ccs:sameDir ,
+                         ccs:segmentId ,
+                         ccs:segmentProfile ,
+                         ccs:segmentProfileLength ,
+                         ccs:segmentSection ,
+                         ccs:segments ,
+                         ccs:spNidC ,
+                         ccs:specificStaticSpeedProfile ,
+                         ccs:speed ,
+                         ccs:startAltitude ,
+                         ccs:staticSpeedProfileChanges ,
+                         ccs:staticSpeedProfileStart ,
+                         ccs:stopLocationTolerance ,
+                         ccs:stoppingPointReachDistance ,
+                         ccs:switchOffEddyCurrentBrakeEmergencyBrakes ,
+                         ccs:switchOffEddyCurrentBrakeServiceBrakes ,
+                         ccs:switchOffMagneticShoeBrakes ,
+                         ccs:switchOffRegenerativeBrakes ,
+                         ccs:timingPoints ,
+                         ccs:timingPointsMapping ,
+                         ccs:trackEdgeSection ,
+                         ccs:trainEndApplicability ,
+                         ccs:tunnelType ,
+                         ccs:tunnels ,
+                         ccs:unprotectedLXs ,
+                         ccs:utcOffset ,
+                         ccs:version ,
+                         ccs:voltage ,
+                         ccs:voltageChanges ,
+                         ccs:voltageStart ;
+        ccs:hasClass ccs:ATO ,
+                     ccs:ATOArea ,
+                     ccs:ATOSegment ,
+                     ccs:AtoTSContactInfo ,
+                     ccs:AxleLoadSpeedProfile ,
+                     ccs:Balise ,
+                     ccs:BaliseGroup ,
+                     ccs:CurrentChange ,
+                     ccs:CurveChange ,
+                     ccs:GradientChange ,
+                     ccs:LimitedDynamicBrakeForce ,
+                     ccs:PermittedBrakingDistance ,
+                     ccs:SegmentProfile ,
+                     ccs:SegmentSection ,
+                     ccs:StaticSpeedProfileChange ,
+                     ccs:StaticSpeedProfileStart ,
+                     ccs:TimingPoint ,
+                     ccs:TimingPointMapping ,
+                     ccs:Tunnel ,
+                     ccs:UnprotectedLX ,
+                     ccs:VoltageChange ,
+                     ccs:VoltageStart ;
+        ccs:hasEnum ccs:CurveRadius ,
+                    ccs:RangeType ,
+                    ccs:StopLocationTolerance ,
+                    ccs:TunnelType .
+
+
+###  http://data.europa.eu/949/ATOArea
+ccs:ATOArea rdf:type owl:NamedIndividual ,
+                     ccs:Class .
+
+
+###  http://data.europa.eu/949/ATOSegment
+ccs:ATOSegment rdf:type owl:NamedIndividual ,
+                        ccs:Class .
+
+
+###  http://data.europa.eu/949/ActiveState
+ccs:ActiveState rdf:type owl:NamedIndividual ,
+                         ccs:Enum .
+
+
+###  http://data.europa.eu/949/ActivityType
+ccs:ActivityType rdf:type owl:NamedIndividual ,
+                          ccs:Enum .
+
+
+###  http://data.europa.eu/949/AdditionalBrakeData
+ccs:AdditionalBrakeData rdf:type owl:NamedIndividual ,
+                                 ccs:Class .
+
+
+###  http://data.europa.eu/949/AdhesionCategory
+ccs:AdhesionCategory rdf:type owl:NamedIndividual ,
+                              ccs:Enum .
+
+
+###  http://data.europa.eu/949/AdhesionRate
+ccs:AdhesionRate rdf:type owl:NamedIndividual ,
+                          ccs:Enum .
+
+
+###  http://data.europa.eu/949/AlignmentType
+ccs:AlignmentType rdf:type owl:NamedIndividual ,
+                           ccs:Enum .
+
+
+###  http://data.europa.eu/949/AllocationSection
+ccs:AllocationSection rdf:type owl:NamedIndividual ,
+                               ccs:Class .
+
+
+###  http://data.europa.eu/949/AllocationType
+ccs:AllocationType rdf:type owl:NamedIndividual ,
+                            ccs:Enum .
+
+
+###  http://data.europa.eu/949/AnyClass
+ccs:AnyClass rdf:type owl:NamedIndividual ,
+                      ccs:Class .
+
+
+###  http://data.europa.eu/949/AtoState
+ccs:AtoState rdf:type owl:NamedIndividual ,
+                      ccs:Enum .
+
+
+###  http://data.europa.eu/949/AtoTSContactInfo
+ccs:AtoTSContactInfo rdf:type owl:NamedIndividual ,
+                              ccs:Class .
+
+
+###  http://data.europa.eu/949/AxleLoadCategory
+ccs:AxleLoadCategory rdf:type owl:NamedIndividual ,
+                              ccs:Enum .
+
+
+###  http://data.europa.eu/949/AxleLoadSpeedProfile
+ccs:AxleLoadSpeedProfile rdf:type owl:NamedIndividual ,
+                                  ccs:Class .
+
+
+###  http://data.europa.eu/949/Balise
+ccs:Balise rdf:type owl:NamedIndividual ,
+                    ccs:Class .
+
+
+###  http://data.europa.eu/949/BaliseAccuracy
+ccs:BaliseAccuracy rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/BaliseGroup
+ccs:BaliseGroup rdf:type owl:NamedIndividual ,
+                         ccs:Class .
+
+
+###  http://data.europa.eu/949/BaliseGroupFunction
+ccs:BaliseGroupFunction rdf:type owl:NamedIndividual ,
+                                 ccs:Enum .
+
+
+###  http://data.europa.eu/949/BrakeModelType
+ccs:BrakeModelType rdf:type owl:NamedIndividual ,
+                            ccs:Enum .
+
+
+###  http://data.europa.eu/949/BrakePosition
+ccs:BrakePosition rdf:type owl:NamedIndividual ,
+                           ccs:Enum .
+
+
+###  http://data.europa.eu/949/BrakeType
+ccs:BrakeType rdf:type owl:NamedIndividual ,
+                       ccs:Enum .
+
+
+###  http://data.europa.eu/949/BrakingModelType
+ccs:BrakingModelType rdf:type owl:NamedIndividual ,
+                              ccs:Enum .
+
+
+###  http://data.europa.eu/949/Bridge
+ccs:Bridge rdf:type owl:NamedIndividual ,
+                    ccs:Class .
+
+
+###  http://data.europa.eu/949/BufferStop
+ccs:BufferStop rdf:type owl:NamedIndividual ,
+                        ccs:Class .
+
+
+###  http://data.europa.eu/949/BufferStopAccuracy
+ccs:BufferStopAccuracy rdf:type owl:NamedIndividual ,
+                                ccs:Class .
+
+
+###  http://data.europa.eu/949/BufferStopType
+ccs:BufferStopType rdf:type owl:NamedIndividual ,
+                            ccs:Enum .
+
+
+###  http://data.europa.eu/949/CantDeficiencyCategory
+ccs:CantDeficiencyCategory rdf:type owl:NamedIndividual ,
+                                    ccs:Enum .
+
+
+###  http://data.europa.eu/949/CantPoint
+ccs:CantPoint rdf:type owl:NamedIndividual ,
+                       ccs:Class .
+
+
+###  http://data.europa.eu/949/CantSamplePoint
+ccs:CantSamplePoint rdf:type owl:NamedIndividual ,
+                             ccs:Class .
+
+
+###  http://data.europa.eu/949/ConditionType
+ccs:ConditionType rdf:type owl:NamedIndividual ,
+                           ccs:Enum .
+
+
+###  http://data.europa.eu/949/ConnectionState
+ccs:ConnectionState rdf:type owl:NamedIndividual ,
+                             ccs:Enum .
+
+
+###  http://data.europa.eu/949/Crossing
+ccs:Crossing rdf:type owl:NamedIndividual ,
+                      ccs:Class .
+
+
+###  http://data.europa.eu/949/CurrentChange
+ccs:CurrentChange rdf:type owl:NamedIndividual ,
+                           ccs:Class .
+
+
+###  http://data.europa.eu/949/CurrentLimitation
+ccs:CurrentLimitation rdf:type owl:NamedIndividual ,
+                               ccs:Class .
+
+
+###  http://data.europa.eu/949/CurveChange
+ccs:CurveChange rdf:type owl:NamedIndividual ,
+                         ccs:Class .
+
+
+###  http://data.europa.eu/949/CurveRadius
+ccs:CurveRadius rdf:type owl:NamedIndividual ,
+                         ccs:Enum .
+
+
+###  http://data.europa.eu/949/CurveSamplePoint
+ccs:CurveSamplePoint rdf:type owl:NamedIndividual ,
+                              ccs:Class .
+
+
+###  http://data.europa.eu/949/DPSDependencyType
+ccs:DPSDependencyType rdf:type owl:NamedIndividual ,
+                               ccs:Enum .
+
+
+###  http://data.europa.eu/949/DangerPoint
+ccs:DangerPoint rdf:type owl:NamedIndividual ,
+                         ccs:Class .
+
+
+###  http://data.europa.eu/949/Derailer
+ccs:Derailer rdf:type owl:NamedIndividual ,
+                      ccs:Class .
+
+
+###  http://data.europa.eu/949/DeviceType
+ccs:DeviceType rdf:type owl:NamedIndividual ,
+                        ccs:Enum .
+
+
+###  http://data.europa.eu/949/DirTrackEdge
+ccs:DirTrackEdge rdf:type owl:NamedIndividual ,
+                          ccs:Class .
+
+
+###  http://data.europa.eu/949/DirTrackEdgePoint
+ccs:DirTrackEdgePoint rdf:type owl:NamedIndividual ,
+                               ccs:Class .
+
+
+###  http://data.europa.eu/949/DirTrackEdgeSection
+ccs:DirTrackEdgeSection rdf:type owl:NamedIndividual ,
+                                 ccs:Class .
+
+
+###  http://data.europa.eu/949/Direction
+ccs:Direction rdf:type owl:NamedIndividual ,
+                       ccs:Enum .
+
+
+###  http://data.europa.eu/949/DoorData
+ccs:DoorData rdf:type owl:NamedIndividual ,
+                      ccs:Class .
+
+
+###  http://data.europa.eu/949/DoorOpeningSide
+ccs:DoorOpeningSide rdf:type owl:NamedIndividual ,
+                             ccs:Enum .
+
+
+###  http://data.europa.eu/949/DoorSide
+ccs:DoorSide rdf:type owl:NamedIndividual ,
+                      ccs:Enum .
+
+
+###  http://data.europa.eu/949/DoorState
+ccs:DoorState rdf:type owl:NamedIndividual ,
+                       ccs:Enum .
+
+
+###  http://data.europa.eu/949/DriveProtectionSection
+ccs:DriveProtectionSection rdf:type owl:NamedIndividual ,
+                                    ccs:Class .
+
+
+###  http://data.europa.eu/949/DriveProtectionSectionGroup
+ccs:DriveProtectionSectionGroup rdf:type owl:NamedIndividual ,
+                                         ccs:Class .
+
+
+###  http://data.europa.eu/949/DuplicationType
+ccs:DuplicationType rdf:type owl:NamedIndividual ,
+                             ccs:Enum .
+
+
+###  http://data.europa.eu/949/ENG
+ccs:ENG rdf:type owl:NamedIndividual ,
+                 ccs:Class ,
+                 ccs:Domain ;
+        ccs:hasAttribute ccs:accuracy ,
+                         ccs:baliseAccuracies ,
+                         ccs:baliseGroup ,
+                         ccs:baliseId ,
+                         ccs:baliseMountingSystem ,
+                         ccs:balises ,
+                         ccs:bladeLength ,
+                         ccs:bsType ,
+                         ccs:bufferStopAccuracies ,
+                         ccs:bufferStopId ,
+                         ccs:bufferStops ,
+                         ccs:clearancePoint ,
+                         ccs:crossings ,
+                         ccs:dangerPoints ,
+                         ccs:defaultSleepersType ,
+                         ccs:designType ,
+                         ccs:engAreaid ,
+                         ccs:engAreas ,
+                         ccs:etcsMarkerAccuracies ,
+                         ccs:etcsPackets ,
+                         ccs:fixed ,
+                         ccs:foulingPoints ,
+                         ccs:id ,
+                         ccs:kmAreaId ,
+                         ccs:kmAreas ,
+                         ccs:kmReferenceMarker ,
+                         ccs:kmSigns ,
+                         ccs:label ,
+                         ccs:levelCrossings ,
+                         ccs:locationAccuracyAreaId ,
+                         ccs:locationAccuracyAreas ,
+                         ccs:m_dup ,
+                         ccs:m_mcount ,
+                         ccs:m_version ,
+                         ccs:markerId ,
+                         ccs:name ,
+                         ccs:nationalBorderAccuracies ,
+                         ccs:nationalBorderId ,
+                         ccs:pos ,
+                         ccs:q_link ,
+                         ccs:q_updown ,
+                         ccs:simplePoints ,
+                         ccs:sleeperFastening ,
+                         ccs:sleepers ,
+                         ccs:standardSize ,
+                         ccs:stopLocationAccuracies ,
+                         ccs:stopLocationId ,
+                         ccs:telegram ,
+                         ccs:telegramChecksum ,
+                         ccs:tipShift ,
+                         ccs:trackEdge ,
+                         ccs:trackEdgeKmSigns ,
+                         ccs:trackEdgeKmSignsId ,
+                         ccs:trackEdgeSection ,
+                         ccs:trackEdgeSections ,
+                         ccs:type ,
+                         ccs:verticallyOriented ;
+        ccs:hasClass ccs:Balise ,
+                     ccs:BaliseAccuracy ,
+                     ccs:BaliseGroup ,
+                     ccs:BufferStop ,
+                     ccs:BufferStopAccuracy ,
+                     ccs:Crossing ,
+                     ccs:DangerPoint ,
+                     ccs:ETCSEngineering ,
+                     ccs:EngArea ,
+                     ccs:EtcsMarkerAccuracy ,
+                     ccs:FoulingPoint ,
+                     ccs:KmArea ,
+                     ccs:KmSign ,
+                     ccs:LevelCrossing ,
+                     ccs:LocationAccuracyArea ,
+                     ccs:NationalBorderAccuracy ,
+                     ccs:SimplePoint ,
+                     ccs:Sleepers ,
+                     ccs:StopLocationAccuracy ,
+                     ccs:TrackEdgeKmSigns ;
+        ccs:hasEnum ccs:BufferStopType ,
+                    ccs:DuplicationType ,
+                    ccs:SleepersType .
+
+
+###  http://data.europa.eu/949/ETCSEngineering
+ccs:ETCSEngineering rdf:type owl:NamedIndividual ,
+                             ccs:Class .
+
+
+###  http://data.europa.eu/949/ETCSMarker
+ccs:ETCSMarker rdf:type owl:NamedIndividual ,
+                        ccs:Class .
+
+
+###  http://data.europa.eu/949/EngArea
+ccs:EngArea rdf:type owl:NamedIndividual ,
+                     ccs:Class .
+
+
+###  http://data.europa.eu/949/EtcsDataAE
+ccs:EtcsDataAE rdf:type owl:NamedIndividual ,
+                        ccs:Class .
+
+
+###  http://data.europa.eu/949/EtcsDataPE
+ccs:EtcsDataPE rdf:type owl:NamedIndividual ,
+                        ccs:Class .
+
+
+###  http://data.europa.eu/949/EtcsMarkerAccuracy
+ccs:EtcsMarkerAccuracy rdf:type owl:NamedIndividual ,
+                                ccs:Class .
+
+
+###  http://data.europa.eu/949/EtcsMode
+ccs:EtcsMode rdf:type owl:NamedIndividual ,
+                      ccs:Enum .
+
+
+###  http://data.europa.eu/949/EtcsTrainCategory
+ccs:EtcsTrainCategory rdf:type owl:NamedIndividual ,
+                               ccs:Enum .
+
+
+###  http://data.europa.eu/949/EventExecutionReportAE
+ccs:EventExecutionReportAE rdf:type owl:NamedIndividual ,
+                                    ccs:Class .
+
+
+###  http://data.europa.eu/949/EventExecutionReportPE
+ccs:EventExecutionReportPE rdf:type owl:NamedIndividual ,
+                                    ccs:Class .
+
+
+###  http://data.europa.eu/949/EventExecutionStateAE
+ccs:EventExecutionStateAE rdf:type owl:NamedIndividual ,
+                                   ccs:Enum .
+
+
+###  http://data.europa.eu/949/EventExecutionStatePE
+ccs:EventExecutionStatePE rdf:type owl:NamedIndividual ,
+                                   ccs:Enum .
+
+
+###  http://data.europa.eu/949/EventIdentifier
+ccs:EventIdentifier rdf:type owl:NamedIndividual ,
+                             ccs:Class .
+
+
+###  http://data.europa.eu/949/ExecutionResponse
+ccs:ExecutionResponse rdf:type owl:NamedIndividual ,
+                               ccs:Class .
+
+
+###  http://data.europa.eu/949/ExtentQuality
+ccs:ExtentQuality rdf:type owl:NamedIndividual ,
+                           ccs:Enum .
+
+
+###  http://data.europa.eu/949/FieldElementDPsGroupState
+ccs:FieldElementDPsGroupState rdf:type owl:NamedIndividual ,
+                                       ccs:Enum .
+
+
+###  http://data.europa.eu/949/FieldElementDrivabilityState
+ccs:FieldElementDrivabilityState rdf:type owl:NamedIndividual ,
+                                          ccs:Enum .
+
+
+###  http://data.europa.eu/949/FieldElementFailureCode
+ccs:FieldElementFailureCode rdf:type owl:NamedIndividual ,
+                                     ccs:Enum .
+
+
+###  http://data.europa.eu/949/FieldElementState
+ccs:FieldElementState rdf:type owl:NamedIndividual ,
+                               ccs:Class .
+
+
+###  http://data.europa.eu/949/FieldObjectController
+ccs:FieldObjectController rdf:type owl:NamedIndividual ,
+                                   ccs:Class .
+
+
+###  http://data.europa.eu/949/FlankProtectionState
+ccs:FlankProtectionState rdf:type owl:NamedIndividual ,
+                                  ccs:Enum .
+
+
+###  http://data.europa.eu/949/FoulingPoint
+ccs:FoulingPoint rdf:type owl:NamedIndividual ,
+                          ccs:Class .
+
+
+###  http://data.europa.eu/949/FulfillmentType
+ccs:FulfillmentType rdf:type owl:NamedIndividual ,
+                             ccs:Enum .
+
+
+###  http://data.europa.eu/949/FunctionalArea
+ccs:FunctionalArea rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/FunctionalElementProjection
+ccs:FunctionalElementProjection rdf:type owl:NamedIndividual ,
+                                         ccs:Class .
+
+
+###  http://data.europa.eu/949/FunctionalElementRef
+ccs:FunctionalElementRef rdf:type owl:NamedIndividual ,
+                                  ccs:Class .
+
+
+###  http://data.europa.eu/949/GeometryArea
+ccs:GeometryArea rdf:type owl:NamedIndividual ,
+                          ccs:Class .
+
+
+###  http://data.europa.eu/949/GradeOfAutomation
+ccs:GradeOfAutomation rdf:type owl:NamedIndividual ,
+                               ccs:Enum .
+
+
+###  http://data.europa.eu/949/GradientChange
+ccs:GradientChange rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/HorizontalArc
+ccs:HorizontalArc rdf:type owl:NamedIndividual ,
+                           ccs:Class .
+
+
+###  http://data.europa.eu/949/HorizontalLine
+ccs:HorizontalLine rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/HorizontalSegment
+ccs:HorizontalSegment rdf:type owl:NamedIndividual ,
+                               ccs:Class .
+
+
+###  http://data.europa.eu/949/HorizontalTransition
+ccs:HorizontalTransition rdf:type owl:NamedIndividual ,
+                                  ccs:Class .
+
+
+###  http://data.europa.eu/949/INFRA
+ccs:INFRA rdf:type owl:NamedIndividual ,
+                   ccs:Class ,
+                   ccs:Domain ;
+          ccs:hasAttribute ccs:activeDir ,
+                           ccs:activeObject ,
+                           ccs:alignment3d ,
+                           ccs:appliedCant ,
+                           ccs:axleLoadCategory ,
+                           ccs:axleLoadSpeedProfiles ,
+                           ccs:azimuth ,
+                           ccs:baliseGroups ,
+                           ccs:balises ,
+                           ccs:bgFunction ,
+                           ccs:brakeType ,
+                           ccs:bridges ,
+                           ccs:bufferStops ,
+                           ccs:cant ,
+                           ccs:cantDeficiencyCategory ,
+                           ccs:cantPoints ,
+                           ccs:cants ,
+                           ccs:conditionType ,
+                           ccs:crossSection ,
+                           ccs:crossing ,
+                           ccs:crossings ,
+                           ccs:currentLimitations ,
+                           ccs:curveRadius ,
+                           ccs:curves ,
+                           ccs:defaultMaxCurrent ,
+                           ccs:defaultVoltage ,
+                           ccs:derailToRight ,
+                           ccs:derailers ,
+                           ccs:detectorType ,
+                           ccs:dirTrackEdges ,
+                           ccs:direction ,
+                           ccs:doorOpeningSide ,
+                           ccs:endPos ,
+                           ccs:etcsMarker ,
+                           ccs:etcsMarkers ,
+                           ccs:fromCountryCode ,
+                           ccs:functionalAreaId ,
+                           ccs:functionalAreas ,
+                           ccs:gauge ,
+                           ccs:geometricPos ,
+                           ccs:geometryAreaId ,
+                           ccs:geometryAreas ,
+                           ccs:height ,
+                           ccs:horizontalAlignment ,
+                           ccs:horizontalSegmentArc ,
+                           ccs:horizontalSegmentLine ,
+                           ccs:id ,
+                           ccs:isSwitchable ,
+                           ccs:levelCrossings ,
+                           ccs:linearLocation ,
+                           ccs:loadingGaugeType ,
+                           ccs:loadingGaugeTypes ,
+                           ccs:markerFunctionStop ,
+                           ccs:maxCurrent ,
+                           ccs:name ,
+                           ccs:nationalBorders ,
+                           ccs:nidBG ,
+                           ccs:nidC ,
+                           ccs:opName ,
+                           ccs:opPoints ,
+                           ccs:operationalPointType ,
+                           ccs:oppositeDirProfile ,
+                           ccs:otherCategoryDoesNotReplaceCantDeficiencySSP ,
+                           ccs:otherCategoryReplacesCantDeficiencySSP ,
+                           ccs:pbdDist ,
+                           ccs:pbdGradient ,
+                           ccs:permittedBrakingDistances ,
+                           ccs:platformEdges ,
+                           ccs:platformId ,
+                           ccs:platforms ,
+                           ccs:pointLeft ,
+                           ccs:pointRight ,
+                           ccs:pointSlope ,
+                           ccs:pos ,
+                           ccs:preferredOppositeDir ,
+                           ccs:preferredSameDir ,
+                           ccs:propertiesAreaId ,
+                           ccs:propertiesAreas ,
+                           ccs:radius ,
+                           ccs:reversalTime ,
+                           ccs:sameDir ,
+                           ccs:sameDirProfile ,
+                           ccs:sampledGeometryAreaId ,
+                           ccs:sampledGeometryAreas ,
+                           ccs:sampledTrackEdgeGeometries ,
+                           ccs:sampledTrackEdgeGeometryId ,
+                           ccs:secondaryTracks ,
+                           ccs:shuntingTracks ,
+                           ccs:simplePoints ,
+                           ccs:skipFromEnd ,
+                           ccs:skipFromPathEnd ,
+                           ccs:skipFromPathStart ,
+                           ccs:skipFromStart ,
+                           ccs:slipCrossings ,
+                           ccs:slope ,
+                           ccs:slopes ,
+                           ccs:specificLimitCategory ,
+                           ccs:specificStaticSpeedLimits ,
+                           ccs:speed ,
+                           ccs:startOfA ,
+                           ccs:startOfB ,
+                           ccs:startPos ,
+                           ccs:staticSpeedProfile ,
+                           ccs:stopLocation ,
+                           ccs:stopLocations ,
+                           ccs:stopTrainLimit ,
+                           ccs:teSpeedProfiles ,
+                           ccs:timeMeasurePoint ,
+                           ccs:timingPoints ,
+                           ccs:toCountryCode ,
+                           ccs:topoAreaId ,
+                           ccs:topoAreas ,
+                           ccs:trackConditions ,
+                           ccs:trackEdge ,
+                           ccs:trackEdgeA ,
+                           ccs:trackEdgeB ,
+                           ccs:trackEdgeGauges ,
+                           ccs:trackEdgeGeometries ,
+                           ccs:trackEdgeGeometryId ,
+                           ccs:trackEdgeId ,
+                           ccs:trackEdgeLength ,
+                           ccs:trackEdgeLinks ,
+                           ccs:trackEdgeLoadingGauges ,
+                           ccs:trackEdgePoints ,
+                           ccs:trackEdgeSections ,
+                           ccs:trackEdgeSpeedProfileId ,
+                           ccs:trackEdges ,
+                           ccs:trackUsageAreaId ,
+                           ccs:trackUsageAreas ,
+                           ccs:tractionSystems ,
+                           ccs:trainDetectors ,
+                           ccs:trainLoadType ,
+                           ccs:trainMaxAxles ,
+                           ccs:trainMaxLength ,
+                           ccs:trainMaxSize ,
+                           ccs:trainMaxWagons ,
+                           ccs:transition ,
+                           ccs:transitionType ,
+                           ccs:travelTimeMeasurementPoints ,
+                           ccs:tunnelIdentification ,
+                           ccs:tunnelTubes ,
+                           ccs:tunnels ,
+                           ccs:tvps ,
+                           ccs:underpasses ,
+                           ccs:uopid ,
+                           ccs:versionTimestamp ,
+                           ccs:verticalAlignment ,
+                           ccs:verticalSegmentArc ,
+                           ccs:verticalSegmentLine ,
+                           ccs:voltageType ;
+          ccs:hasClass ccs:AxleLoadSpeedProfile ,
+                       ccs:Balise ,
+                       ccs:BaliseGroup ,
+                       ccs:Bridge ,
+                       ccs:BufferStop ,
+                       ccs:CantPoint ,
+                       ccs:CantSamplePoint ,
+                       ccs:Crossing ,
+                       ccs:CurrentLimitation ,
+                       ccs:CurveSamplePoint ,
+                       ccs:Derailer ,
+                       ccs:DirTrackEdge ,
+                       ccs:DirTrackEdgePoint ,
+                       ccs:DirTrackEdgeSection ,
+                       ccs:ETCSMarker ,
+                       ccs:FunctionalArea ,
+                       ccs:GeometryArea ,
+                       ccs:HorizontalArc ,
+                       ccs:HorizontalLine ,
+                       ccs:HorizontalSegment ,
+                       ccs:HorizontalTransition ,
+                       ccs:Infrastructure ,
+                       ccs:LevelCrossing ,
+                       ccs:LinkedPath ,
+                       ccs:NationalBorder ,
+                       ccs:OperationalPoint ,
+                       ccs:PermittedBrakingDistance ,
+                       ccs:Platform ,
+                       ccs:PlatformEdge ,
+                       ccs:PropertiesArea ,
+                       ccs:SampledGeometryArea ,
+                       ccs:SampledTrackEdgeGeometry ,
+                       ccs:SimplePoint ,
+                       ccs:SlipCrossing ,
+                       ccs:SlopeSamplePoint ,
+                       ccs:SpecificStaticSpeedLimit ,
+                       ccs:SpeedLimitCategory ,
+                       ccs:SpeedProfile ,
+                       ccs:StaticSpeedLimit ,
+                       ccs:StopLocation ,
+                       ccs:StopTrainLimit ,
+                       ccs:TPActiveObject ,
+                       ccs:TimingPoint ,
+                       ccs:TopoArea ,
+                       ccs:TrackCondition ,
+                       ccs:TrackEdge ,
+                       ccs:TrackEdgeGauge ,
+                       ccs:TrackEdgeGeometry ,
+                       ccs:TrackEdgeLink ,
+                       ccs:TrackEdgeLoadingGauge ,
+                       ccs:TrackEdgePoint ,
+                       ccs:TrackEdgeSection ,
+                       ccs:TrackEdgeSpeedProfile ,
+                       ccs:TrackUsageArea ,
+                       ccs:TractionSystem ,
+                       ccs:TrainDetector ,
+                       ccs:TravelTimeMeasurementPoint ,
+                       ccs:Tunnel ,
+                       ccs:TunnelTube ,
+                       ccs:TvpSection ,
+                       ccs:Underpass ,
+                       ccs:VerticalArc ,
+                       ccs:VerticalLine ,
+                       ccs:VerticalSegment ;
+          ccs:hasEnum ccs:AxleLoadCategory ,
+                      ccs:BaliseGroupFunction ,
+                      ccs:BrakeType ,
+                      ccs:CantDeficiencyCategory ,
+                      ccs:ConditionType ,
+                      ccs:Direction ,
+                      ccs:DoorOpeningSide ,
+                      ccs:LoadingGaugeType ,
+                      ccs:OPType ,
+                      ccs:OtherSpecificStaticSpeedProfileCategory ,
+                      ccs:PlatformHeight ,
+                      ccs:TrackGaugeType ,
+                      ccs:TrainDetectorType ,
+                      ccs:TrainEndApplicability ,
+                      ccs:TrainLoadType ,
+                      ccs:TrainSize ,
+                      ccs:TransitionType ,
+                      ccs:VoltageType .
+
+
+###  http://data.europa.eu/949/Infrastructure
+ccs:Infrastructure rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/KmArea
+ccs:KmArea rdf:type owl:NamedIndividual ,
+                    ccs:Class .
+
+
+###  http://data.europa.eu/949/KmSign
+ccs:KmSign rdf:type owl:NamedIndividual ,
+                    ccs:Class .
+
+
+###  http://data.europa.eu/949/LevelCrossing
+ccs:LevelCrossing rdf:type owl:NamedIndividual ,
+                           ccs:Class .
+
+
+###  http://data.europa.eu/949/LimitedDynamicBrakeForce
+ccs:LimitedDynamicBrakeForce rdf:type owl:NamedIndividual ,
+                                      ccs:Class .
+
+
+###  http://data.europa.eu/949/LinkedPath
+ccs:LinkedPath rdf:type owl:NamedIndividual ,
+                        ccs:Class .
+
+
+###  http://data.europa.eu/949/LoadingGaugeType
+ccs:LoadingGaugeType rdf:type owl:NamedIndividual ,
+                              ccs:Enum .
+
+
+###  http://data.europa.eu/949/LocationAccuracyArea
+ccs:LocationAccuracyArea rdf:type owl:NamedIndividual ,
+                                  ccs:Class .
+
+
+###  http://data.europa.eu/949/MAP
+ccs:MAP rdf:type owl:NamedIndividual ,
+                 ccs:Class ,
+                 ccs:Domain ;
+        ccs:hasAttribute ccs:accPos ,
+                         ccs:accX ,
+                         ccs:accY ,
+                         ccs:accZ ,
+                         ccs:areaId ,
+                         ccs:balise ,
+                         ccs:coordinates ,
+                         ccs:elementRef ,
+                         ccs:epsg ,
+                         ccs:etcsMarker ,
+                         ccs:functionalElements ,
+                         ccs:id ,
+                         ccs:mapAreas ,
+                         ccs:name ,
+                         ccs:operationalPoint ,
+                         ccs:pos ,
+                         ccs:simplePoint ,
+                         ccs:stopLocation ,
+                         ccs:timingPoint ,
+                         ccs:trackEdgeProjectionId ,
+                         ccs:trackEdgeProjections ,
+                         ccs:versionTimestamp ,
+                         ccs:x ,
+                         ccs:y ,
+                         ccs:z ;
+        ccs:hasClass ccs:FunctionalElementProjection ,
+                     ccs:FunctionalElementRef ,
+                     ccs:MapArea ,
+                     ccs:MapMgmt ,
+                     ccs:TrackEdgeCoordinate ,
+                     ccs:TrackEdgeProjection .
+
+
+###  http://data.europa.eu/949/MapArea
+ccs:MapArea rdf:type owl:NamedIndividual ,
+                     ccs:Class .
+
+
+###  http://data.europa.eu/949/MapMgmt
+ccs:MapMgmt rdf:type owl:NamedIndividual ,
+                     ccs:Class .
+
+
+###  http://data.europa.eu/949/Movement
+ccs:Movement rdf:type owl:NamedIndividual ,
+                      ccs:Class .
+
+
+###  http://data.europa.eu/949/MovementEvent
+ccs:MovementEvent rdf:type owl:NamedIndividual ,
+                           ccs:Class .
+
+
+###  http://data.europa.eu/949/MovementEventType
+ccs:MovementEventType rdf:type owl:NamedIndividual ,
+                               ccs:Enum .
+
+
+###  http://data.europa.eu/949/MovementRestriction
+ccs:MovementRestriction rdf:type owl:NamedIndividual ,
+                                 ccs:Class .
+
+
+###  http://data.europa.eu/949/NationalBorder
+ccs:NationalBorder rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/NationalBorderAccuracy
+ccs:NationalBorderAccuracy rdf:type owl:NamedIndividual ,
+                                    ccs:Class .
+
+
+###  http://data.europa.eu/949/OPP
+ccs:OPP rdf:type owl:NamedIndividual ,
+                 ccs:Class ,
+                 ccs:Domain ;
+        ccs:hasAttribute ccs:activation ,
+                         ccs:activationTime ,
+                         ccs:activityType ,
+                         ccs:actualTrainUnitIndex ,
+                         ccs:additionalBrakeData ,
+                         ccs:additionalTrainRunningNumber ,
+                         ccs:adhesionCategory ,
+                         ccs:adhesionIndependentBrakeState ,
+                         ccs:alignment ,
+                         ccs:allocatedTrackEdges ,
+                         ccs:allocationType ,
+                         ccs:allowedDrivingModes ,
+                         ccs:anyClass ,
+                         ccs:appliedToTrains ,
+                         ccs:arrivalWindow ,
+                         ccs:atoState ,
+                         ccs:availableAdhesion ,
+                         ccs:axleLoadCategory ,
+                         ccs:brakeModelType ,
+                         ccs:brakePercentage ,
+                         ccs:brakePosition ,
+                         ccs:brakingModelType ,
+                         ccs:categoryType ,
+                         ccs:centralisedClosing ,
+                         ccs:centralisedOpening ,
+                         ccs:changeOfGradeOfAutomation ,
+                         ccs:className ,
+                         ccs:configurationDataVersionRef ,
+                         ccs:connection ,
+                         ccs:content ,
+                         ccs:dataValid ,
+                         ccs:departure ,
+                         ccs:description ,
+                         ccs:deviceType ,
+                         ccs:dirTrackEdgeSections ,
+                         ccs:doorData ,
+                         ccs:doorSide ,
+                         ccs:doorState ,
+                         ccs:dpsGroupRef ,
+                         ccs:driverId ,
+                         ccs:eddyCurrentBrakeState ,
+                         ccs:electroPneumaticBrakeState ,
+                         ccs:elementState ,
+                         ccs:emergencyBrakeWeightPercentage ,
+                         ccs:endPoint ,
+                         ccs:endPositions ,
+                         ccs:engineeringTrainsOnly ,
+                         ccs:etcsDataAE ,
+                         ccs:etcsSystemVersions ,
+                         ccs:etcsTrainCategory ,
+                         ccs:eventIdentifier ,
+                         ccs:eventType ,
+                         ccs:events ,
+                         ccs:executionState ,
+                         ccs:extent ,
+                         ccs:extentQuality ,
+                         ccs:failureCode ,
+                         ccs:flank ,
+                         ccs:frontPosition ,
+                         ccs:header ,
+                         ccs:holdTrain ,
+                         ccs:id ,
+                         ccs:isMoving ,
+                         ccs:isSlipping ,
+                         ccs:issuedAt ,
+                         ccs:lastPassengerExchangeTime ,
+                         ccs:latestArrival ,
+                         ccs:leadingOnBoardUnitId ,
+                         ccs:lowAdhesion ,
+                         ccs:magneticShoeBrakeState ,
+                         ccs:mass ,
+                         ccs:maxAdhesion ,
+                         ccs:maxAvailableDynamicBrakeForce ,
+                         ccs:maxAvailableDynamicBrakePower ,
+                         ccs:maxAvailableOutputPower ,
+                         ccs:maxAvailableServiceBrakeForce ,
+                         ccs:maxAvailableTractiveEffort ,
+                         ccs:maxAxleLoad ,
+                         ccs:maxConfidentialInterval ,
+                         ccs:maxSpeed ,
+                         ccs:maximumSpeed ,
+                         ccs:minCantDeficiency ,
+                         ccs:minConfidentialInterval ,
+                         ccs:minDwellTime ,
+                         ccs:minTrainAirTightness ,
+                         ccs:mode ,
+                         ccs:movement ,
+                         ccs:movementEvent ,
+                         ccs:movementEvents ,
+                         ccs:movementRestrictions ,
+                         ccs:movements ,
+                         ccs:nominalRotatingMass ,
+                         ccs:nonStoppingArea ,
+                         ccs:openingDoorSide ,
+                         ccs:operability ,
+                         ccs:operationalConditionsFulfilled ,
+                         ccs:operationalConsists ,
+                         ccs:operationalPlanRef ,
+                         ccs:operationalRadioHole ,
+                         ccs:operationalTrainCategory ,
+                         ccs:operationalTrainUnits ,
+                         ccs:passengerData ,
+                         ccs:passengerLoad ,
+                         ccs:physicalConsist ,
+                         ccs:physicalTrainIdentifier ,
+                         ccs:physicalTrainUnit ,
+                         ccs:physicalVehicle ,
+                         ccs:planIdentifier ,
+                         ccs:planIssuedTime ,
+                         ccs:platformEdges ,
+                         ccs:position ,
+                         ccs:preconfiguredBrakingModel ,
+                         ccs:prohibitedLoadingGaugeTypes ,
+                         ccs:prohibitedLoadingType ,
+                         ccs:protectionType ,
+                         ccs:regenerativeBrakeState ,
+                         ccs:regularBrakeWeightPercentage ,
+                         ccs:rejectReason ,
+                         ccs:relaxedCoupler ,
+                         ccs:removalTime ,
+                         ccs:reportTime ,
+                         ccs:responseCode ,
+                         ccs:responseTime ,
+                         ccs:restrictedAspects ,
+                         ccs:restriction ,
+                         ccs:restrictionAreas ,
+                         ccs:restrictionEvent ,
+                         ccs:restrictionEvents ,
+                         ccs:restrictions ,
+                         ccs:safeTrainLength ,
+                         ccs:specificRestriction ,
+                         ccs:specificRestrictions ,
+                         ccs:start ,
+                         ccs:startPoint ,
+                         ccs:stopDescription ,
+                         ccs:stopSkipped ,
+                         ccs:stopType ,
+                         ccs:supportedOnBoardEquipment ,
+                         ccs:tafTapTsiTrainID ,
+                         ccs:targetTrainUnitIndex ,
+                         ccs:temporarySpeedRestriction ,
+                         ccs:trackAllocation ,
+                         ccs:trackEdgeSections ,
+                         ccs:trackPathToNextEvent ,
+                         ccs:tractionTypes ,
+                         ccs:trainCategories ,
+                         ccs:trainLength ,
+                         ccs:trainRunningNumber ,
+                         ccs:trainTypes ,
+                         ccs:trainUnitActivities ,
+                         ccs:trainUnitIdentifier ,
+                         ccs:trainUsage ,
+                         ccs:uicIdentifier ,
+                         ccs:usedGradeOfAutomation ,
+                         ccs:vehicleMass ,
+                         ccs:vehicleOrientation ,
+                         ccs:velocity ,
+                         ccs:velocityValue ,
+                         ccs:warningArea ,
+                         ccs:warningDevices ,
+                         ccs:warningMeasure ,
+                         ccs:warningMeasureAreas ,
+                         ccs:warningMeasureEvent ,
+                         ccs:warningMeasures ;
+        ccs:hasClass ccs:AdditionalBrakeData ,
+                     ccs:AnyClass ,
+                     ccs:DoorData ,
+                     ccs:EtcsDataAE ,
+                     ccs:EtcsDataPE ,
+                     ccs:EventExecutionReportAE ,
+                     ccs:EventExecutionReportPE ,
+                     ccs:EventIdentifier ,
+                     ccs:ExecutionResponse ,
+                     ccs:FieldElementState ,
+                     ccs:Movement ,
+                     ccs:MovementEvent ,
+                     ccs:MovementRestriction ,
+                     ccs:OperationalConsist ,
+                     ccs:OperationalPlan ,
+                     ccs:OperationalTrainCategory ,
+                     ccs:PassengerData ,
+                     ccs:PhysicalConsist ,
+                     ccs:PhysicalTrainUnitIdentifier ,
+                     ccs:PhysicalVehicle ,
+                     ccs:PlanIdentifier ,
+                     ccs:RestrictedAspects ,
+                     ccs:Restriction ,
+                     ccs:RestrictionArea ,
+                     ccs:RestrictionEvent ,
+                     ccs:SpecificMovementRestriction ,
+                     ccs:SpecificRestriction ,
+                     ccs:StopDescription ,
+                     ccs:SupportedOnBoardEquipment ,
+                     ccs:TrackAllocation ,
+                     ccs:TrackAllocationRemoval ,
+                     ccs:TrainCapabilitiesReport ,
+                     ccs:TrainGroupSpec ,
+                     ccs:TrainUnit ,
+                     ccs:TrainUnitAESTR ,
+                     ccs:TrainUnitActivity ,
+                     ccs:TrainUnitPositionReportAE ,
+                     ccs:TrainUnitPositionReportPE ,
+                     ccs:TrainUnitReportHeader ,
+                     ccs:TrainUnitStateAE ,
+                     ccs:TrainUnitStateReportPE ,
+                     ccs:Velocity ,
+                     ccs:WarningArea ,
+                     ccs:WarningDevice ,
+                     ccs:WarningMeasure ,
+                     ccs:WarningMeasureEvent ;
+        ccs:hasEnum ccs:ActiveState ,
+                    ccs:ActivityType ,
+                    ccs:AdhesionCategory ,
+                    ccs:AdhesionRate ,
+                    ccs:AlignmentType ,
+                    ccs:AllocationType ,
+                    ccs:AtoState ,
+                    ccs:BrakeModelType ,
+                    ccs:BrakePosition ,
+                    ccs:BrakingModelType ,
+                    ccs:ConnectionState ,
+                    ccs:DeviceType ,
+                    ccs:DoorSide ,
+                    ccs:DoorState ,
+                    ccs:EtcsMode ,
+                    ccs:EtcsTrainCategory ,
+                    ccs:EventExecutionStateAE ,
+                    ccs:EventExecutionStatePE ,
+                    ccs:ExtentQuality ,
+                    ccs:FieldElementDPsGroupState ,
+                    ccs:FieldElementDrivabilityState ,
+                    ccs:FieldElementFailureCode ,
+                    ccs:FlankProtectionState ,
+                    ccs:FulfillmentType ,
+                    ccs:GradeOfAutomation ,
+                    ccs:MovementEventType ,
+                    ccs:OperatingState ,
+                    ccs:PositionType ,
+                    ccs:ResponseCode ,
+                    ccs:StopType ,
+                    ccs:TrainAirTightness ,
+                    ccs:TrainCategoryType ,
+                    ccs:TrainDrivingMode ,
+                    ccs:TrainProtectionType ,
+                    ccs:TrainTractionType ,
+                    ccs:TrainType ,
+                    ccs:TrainUsageType ,
+                    ccs:TriState ,
+                    ccs:VehicleOrientation .
+
+
+###  http://data.europa.eu/949/OPType
+ccs:OPType rdf:type owl:NamedIndividual ,
+                    ccs:Enum .
+
+
+###  http://data.europa.eu/949/OperatingState
+ccs:OperatingState rdf:type owl:NamedIndividual ,
+                            ccs:Enum .
+
+
+###  http://data.europa.eu/949/OperationalConsist
+ccs:OperationalConsist rdf:type owl:NamedIndividual ,
+                                ccs:Class .
+
+
+###  http://data.europa.eu/949/OperationalPlan
+ccs:OperationalPlan rdf:type owl:NamedIndividual ,
+                             ccs:Class .
+
+
+###  http://data.europa.eu/949/OperationalPoint
+ccs:OperationalPoint rdf:type owl:NamedIndividual ,
+                              ccs:Class .
+
+
+###  http://data.europa.eu/949/OperationalTrainCategory
+ccs:OperationalTrainCategory rdf:type owl:NamedIndividual ,
+                                      ccs:Class .
+
+
+###  http://data.europa.eu/949/OtherSpecificStaticSpeedProfileCategory
+ccs:OtherSpecificStaticSpeedProfileCategory rdf:type owl:NamedIndividual ,
+                                                     ccs:Enum .
+
+
+###  http://data.europa.eu/949/PassengerData
+ccs:PassengerData rdf:type owl:NamedIndividual ,
+                           ccs:Class .
+
+
+###  http://data.europa.eu/949/PermittedBrakingDistance
+ccs:PermittedBrakingDistance rdf:type owl:NamedIndividual ,
+                                      ccs:Class .
+
+
+###  http://data.europa.eu/949/PhysicalConsist
+ccs:PhysicalConsist rdf:type owl:NamedIndividual ,
+                             ccs:Class .
+
+
+###  http://data.europa.eu/949/PhysicalTrainUnitIdentifier
+ccs:PhysicalTrainUnitIdentifier rdf:type owl:NamedIndividual ,
+                                         ccs:Class .
+
+
+###  http://data.europa.eu/949/PhysicalVehicle
+ccs:PhysicalVehicle rdf:type owl:NamedIndividual ,
+                             ccs:Class .
+
+
+###  http://data.europa.eu/949/PlanIdentifier
+ccs:PlanIdentifier rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/Platform
+ccs:Platform rdf:type owl:NamedIndividual ,
+                      ccs:Class .
+
+
+###  http://data.europa.eu/949/PlatformEdge
+ccs:PlatformEdge rdf:type owl:NamedIndividual ,
+                          ccs:Class .
+
+
+###  http://data.europa.eu/949/PlatformHeight
+ccs:PlatformHeight rdf:type owl:NamedIndividual ,
+                            ccs:Enum .
+
+
+###  http://data.europa.eu/949/PositionType
+ccs:PositionType rdf:type owl:NamedIndividual ,
+                          ccs:Enum .
+
+
+###  http://data.europa.eu/949/PropertiesArea
+ccs:PropertiesArea rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/ProtectedInfraElement
+ccs:ProtectedInfraElement rdf:type owl:NamedIndividual ,
+                                   ccs:Class .
+
+
+###  http://data.europa.eu/949/RangeType
+ccs:RangeType rdf:type owl:NamedIndividual ,
+                       ccs:Enum .
+
+
+###  http://data.europa.eu/949/ResponseCode
+ccs:ResponseCode rdf:type owl:NamedIndividual ,
+                          ccs:Enum .
+
+
+###  http://data.europa.eu/949/RestrictedAspects
+ccs:RestrictedAspects rdf:type owl:NamedIndividual ,
+                               ccs:Class .
+
+
+###  http://data.europa.eu/949/Restriction
+ccs:Restriction rdf:type owl:NamedIndividual ,
+                         ccs:Class .
+
+
+###  http://data.europa.eu/949/RestrictionArea
+ccs:RestrictionArea rdf:type owl:NamedIndividual ,
+                             ccs:Class .
+
+
+###  http://data.europa.eu/949/RestrictionEvent
+ccs:RestrictionEvent rdf:type owl:NamedIndividual ,
+                              ccs:Class .
+
+
+###  http://data.europa.eu/949/SampledGeometryArea
+ccs:SampledGeometryArea rdf:type owl:NamedIndividual ,
+                                 ccs:Class .
+
+
+###  http://data.europa.eu/949/SampledTrackEdgeGeometry
+ccs:SampledTrackEdgeGeometry rdf:type owl:NamedIndividual ,
+                                      ccs:Class .
+
+
+###  http://data.europa.eu/949/SegmentProfile
+ccs:SegmentProfile rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/SegmentSection
+ccs:SegmentSection rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/SimplePoint
+ccs:SimplePoint rdf:type owl:NamedIndividual ,
+                         ccs:Class .
+
+
+###  http://data.europa.eu/949/Sleepers
+ccs:Sleepers rdf:type owl:NamedIndividual ,
+                      ccs:Class .
+
+
+###  http://data.europa.eu/949/SleepersType
+ccs:SleepersType rdf:type owl:NamedIndividual ,
+                          ccs:Enum .
+
+
+###  http://data.europa.eu/949/SlipCrossing
+ccs:SlipCrossing rdf:type owl:NamedIndividual ,
+                          ccs:Class .
+
+
+###  http://data.europa.eu/949/SlopeSamplePoint
+ccs:SlopeSamplePoint rdf:type owl:NamedIndividual ,
+                              ccs:Class .
+
+
+###  http://data.europa.eu/949/SpecificMovementRestriction
+ccs:SpecificMovementRestriction rdf:type owl:NamedIndividual ,
+                                         ccs:Class .
+
+
+###  http://data.europa.eu/949/SpecificRestriction
+ccs:SpecificRestriction rdf:type owl:NamedIndividual ,
+                                 ccs:Class .
+
+
+###  http://data.europa.eu/949/SpecificStaticSpeedLimit
+ccs:SpecificStaticSpeedLimit rdf:type owl:NamedIndividual ,
+                                      ccs:Class .
+
+
+###  http://data.europa.eu/949/SpeedLimitCategory
+ccs:SpeedLimitCategory rdf:type owl:NamedIndividual ,
+                                ccs:Class .
+
+
+###  http://data.europa.eu/949/SpeedProfile
+ccs:SpeedProfile rdf:type owl:NamedIndividual ,
+                          ccs:Class .
+
+
+###  http://data.europa.eu/949/StaticSpeedLimit
+ccs:StaticSpeedLimit rdf:type owl:NamedIndividual ,
+                              ccs:Class .
+
+
+###  http://data.europa.eu/949/StaticSpeedProfileChange
+ccs:StaticSpeedProfileChange rdf:type owl:NamedIndividual ,
+                                      ccs:Class .
+
+
+###  http://data.europa.eu/949/StaticSpeedProfileStart
+ccs:StaticSpeedProfileStart rdf:type owl:NamedIndividual ,
+                                     ccs:Class .
+
+
+###  http://data.europa.eu/949/StopDescription
+ccs:StopDescription rdf:type owl:NamedIndividual ,
+                             ccs:Class .
+
+
+###  http://data.europa.eu/949/StopLocation
+ccs:StopLocation rdf:type owl:NamedIndividual ,
+                          ccs:Class .
+
+
+###  http://data.europa.eu/949/StopLocationAccuracy
+ccs:StopLocationAccuracy rdf:type owl:NamedIndividual ,
+                                  ccs:Class .
+
+
+###  http://data.europa.eu/949/StopLocationTolerance
+ccs:StopLocationTolerance rdf:type owl:NamedIndividual ,
+                                   ccs:Enum .
+
+
+###  http://data.europa.eu/949/StopTrainLimit
+ccs:StopTrainLimit rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/StopType
+ccs:StopType rdf:type owl:NamedIndividual ,
+                      ccs:Enum .
+
+
+###  http://data.europa.eu/949/SupportedOnBoardEquipment
+ccs:SupportedOnBoardEquipment rdf:type owl:NamedIndividual ,
+                                       ccs:Class .
+
+
+###  http://data.europa.eu/949/TP
+ccs:TP rdf:type owl:NamedIndividual ,
+                ccs:Class ,
+                ccs:Domain ;
+       ccs:hasAttribute ccs:allocationSections ,
+                        ccs:controlledDpsGroup ,
+                        ccs:controlledTvpSection ,
+                        ccs:crossing ,
+                        ccs:dependencies ,
+                        ccs:dependenciesType ,
+                        ccs:derailer ,
+                        ccs:dpsGroups ,
+                        ccs:dpsgDependencies ,
+                        ccs:driveProtectionSections ,
+                        ccs:fieldObjectControllers ,
+                        ccs:id ,
+                        ccs:ipAddresses ,
+                        ccs:levelCrossing ,
+                        ccs:linearLocation ,
+                        ccs:maxFlankProtectionSpeed ,
+                        ccs:name ,
+                        ccs:protectedInfraElements ,
+                        ccs:runTime ,
+                        ccs:simplePoint ,
+                        ccs:slipCrossing ,
+                        ccs:tpArea ,
+                        ccs:trackEdgeSection ,
+                        ccs:trainProtectionAreaId ;
+       ccs:hasClass ccs:AllocationSection ,
+                    ccs:DriveProtectionSection ,
+                    ccs:DriveProtectionSectionGroup ,
+                    ccs:FieldObjectController ,
+                    ccs:ProtectedInfraElement ,
+                    ccs:TrainProtection ,
+                    ccs:TrainProtectionArea ;
+       ccs:hasEnum ccs:DPSDependencyType .
+
+
+###  http://data.europa.eu/949/TPActiveObject
+ccs:TPActiveObject rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/TimingPoint
+ccs:TimingPoint rdf:type owl:NamedIndividual ,
+                         ccs:Class .
+
+
+###  http://data.europa.eu/949/TimingPointMapping
+ccs:TimingPointMapping rdf:type owl:NamedIndividual ,
+                                ccs:Class .
+
+
+###  http://data.europa.eu/949/TopoArea
+ccs:TopoArea rdf:type owl:NamedIndividual ,
+                      ccs:Class .
+
+
+###  http://data.europa.eu/949/TrackAllocation
+ccs:TrackAllocation rdf:type owl:NamedIndividual ,
+                             ccs:Class .
+
+
+###  http://data.europa.eu/949/TrackAllocationRemoval
+ccs:TrackAllocationRemoval rdf:type owl:NamedIndividual ,
+                                    ccs:Class .
+
+
+###  http://data.europa.eu/949/TrackCondition
+ccs:TrackCondition rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/TrackEdge
+ccs:TrackEdge rdf:type owl:NamedIndividual ,
+                       ccs:Class .
+
+
+###  http://data.europa.eu/949/TrackEdgeCoordinate
+ccs:TrackEdgeCoordinate rdf:type owl:NamedIndividual ,
+                                 ccs:Class .
+
+
+###  http://data.europa.eu/949/TrackEdgeGauge
+ccs:TrackEdgeGauge rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/TrackEdgeGeometry
+ccs:TrackEdgeGeometry rdf:type owl:NamedIndividual ,
+                               ccs:Class .
+
+
+###  http://data.europa.eu/949/TrackEdgeKmSigns
+ccs:TrackEdgeKmSigns rdf:type owl:NamedIndividual ,
+                              ccs:Class .
+
+
+###  http://data.europa.eu/949/TrackEdgeLink
+ccs:TrackEdgeLink rdf:type owl:NamedIndividual ,
+                           ccs:Class .
+
+
+###  http://data.europa.eu/949/TrackEdgeLoadingGauge
+ccs:TrackEdgeLoadingGauge rdf:type owl:NamedIndividual ,
+                                   ccs:Class .
+
+
+###  http://data.europa.eu/949/TrackEdgePoint
+ccs:TrackEdgePoint rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/TrackEdgeProjection
+ccs:TrackEdgeProjection rdf:type owl:NamedIndividual ,
+                                 ccs:Class .
+
+
+###  http://data.europa.eu/949/TrackEdgeSection
+ccs:TrackEdgeSection rdf:type owl:NamedIndividual ,
+                              ccs:Class .
+
+
+###  http://data.europa.eu/949/TrackEdgeSpeedProfile
+ccs:TrackEdgeSpeedProfile rdf:type owl:NamedIndividual ,
+                                   ccs:Class .
+
+
+###  http://data.europa.eu/949/TrackGaugeType
+ccs:TrackGaugeType rdf:type owl:NamedIndividual ,
+                            ccs:Enum .
+
+
+###  http://data.europa.eu/949/TrackUsageArea
+ccs:TrackUsageArea rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/TractionSystem
+ccs:TractionSystem rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/TrainAirTightness
+ccs:TrainAirTightness rdf:type owl:NamedIndividual ,
+                               ccs:Enum .
+
+
+###  http://data.europa.eu/949/TrainCapabilitiesReport
+ccs:TrainCapabilitiesReport rdf:type owl:NamedIndividual ,
+                                     ccs:Class .
+
+
+###  http://data.europa.eu/949/TrainCategoryType
+ccs:TrainCategoryType rdf:type owl:NamedIndividual ,
+                               ccs:Enum .
+
+
+###  http://data.europa.eu/949/TrainDetector
+ccs:TrainDetector rdf:type owl:NamedIndividual ,
+                           ccs:Class .
+
+
+###  http://data.europa.eu/949/TrainDetectorType
+ccs:TrainDetectorType rdf:type owl:NamedIndividual ,
+                               ccs:Enum .
+
+
+###  http://data.europa.eu/949/TrainDrivingMode
+ccs:TrainDrivingMode rdf:type owl:NamedIndividual ,
+                              ccs:Enum .
+
+
+###  http://data.europa.eu/949/TrainEndApplicability
+ccs:TrainEndApplicability rdf:type owl:NamedIndividual ,
+                                   ccs:Enum .
+
+
+###  http://data.europa.eu/949/TrainGroupSpec
+ccs:TrainGroupSpec rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/TrainLoadType
+ccs:TrainLoadType rdf:type owl:NamedIndividual ,
+                           ccs:Enum .
+
+
+###  http://data.europa.eu/949/TrainProtection
+ccs:TrainProtection rdf:type owl:NamedIndividual ,
+                             ccs:Class .
+
+
+###  http://data.europa.eu/949/TrainProtectionArea
+ccs:TrainProtectionArea rdf:type owl:NamedIndividual ,
+                                 ccs:Class .
+
+
+###  http://data.europa.eu/949/TrainProtectionType
+ccs:TrainProtectionType rdf:type owl:NamedIndividual ,
+                                 ccs:Enum .
+
+
+###  http://data.europa.eu/949/TrainSize
+ccs:TrainSize rdf:type owl:NamedIndividual ,
+                       ccs:Enum .
+
+
+###  http://data.europa.eu/949/TrainTractionType
+ccs:TrainTractionType rdf:type owl:NamedIndividual ,
+                               ccs:Enum .
+
+
+###  http://data.europa.eu/949/TrainType
+ccs:TrainType rdf:type owl:NamedIndividual ,
+                       ccs:Enum .
+
+
+###  http://data.europa.eu/949/TrainUnit
+ccs:TrainUnit rdf:type owl:NamedIndividual ,
+                       ccs:Class .
+
+
+###  http://data.europa.eu/949/TrainUnitAESTR
+ccs:TrainUnitAESTR rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/TrainUnitActivity
+ccs:TrainUnitActivity rdf:type owl:NamedIndividual ,
+                               ccs:Class .
+
+
+###  http://data.europa.eu/949/TrainUnitPositionReportAE
+ccs:TrainUnitPositionReportAE rdf:type owl:NamedIndividual ,
+                                       ccs:Class .
+
+
+###  http://data.europa.eu/949/TrainUnitPositionReportPE
+ccs:TrainUnitPositionReportPE rdf:type owl:NamedIndividual ,
+                                       ccs:Class .
+
+
+###  http://data.europa.eu/949/TrainUnitReportHeader
+ccs:TrainUnitReportHeader rdf:type owl:NamedIndividual ,
+                                   ccs:Class .
+
+
+###  http://data.europa.eu/949/TrainUnitStateAE
+ccs:TrainUnitStateAE rdf:type owl:NamedIndividual ,
+                              ccs:Class .
+
+
+###  http://data.europa.eu/949/TrainUnitStateReportPE
+ccs:TrainUnitStateReportPE rdf:type owl:NamedIndividual ,
+                                    ccs:Class .
+
+
+###  http://data.europa.eu/949/TrainUsageType
+ccs:TrainUsageType rdf:type owl:NamedIndividual ,
+                            ccs:Enum .
+
+
+###  http://data.europa.eu/949/TransitionType
+ccs:TransitionType rdf:type owl:NamedIndividual ,
+                            ccs:Enum .
+
+
+###  http://data.europa.eu/949/TravelTimeMeasurementPoint
+ccs:TravelTimeMeasurementPoint rdf:type owl:NamedIndividual ,
+                                        ccs:Class .
+
+
+###  http://data.europa.eu/949/TriState
+ccs:TriState rdf:type owl:NamedIndividual ,
+                      ccs:Enum .
+
+
+###  http://data.europa.eu/949/Tunnel
+ccs:Tunnel rdf:type owl:NamedIndividual ,
+                    ccs:Class .
+
+
+###  http://data.europa.eu/949/TunnelTube
+ccs:TunnelTube rdf:type owl:NamedIndividual ,
+                        ccs:Class .
+
+
+###  http://data.europa.eu/949/TunnelType
+ccs:TunnelType rdf:type owl:NamedIndividual ,
+                        ccs:Enum .
+
+
+###  http://data.europa.eu/949/TvpSection
+ccs:TvpSection rdf:type owl:NamedIndividual ,
+                        ccs:Class .
+
+
+###  http://data.europa.eu/949/Underpass
+ccs:Underpass rdf:type owl:NamedIndividual ,
+                       ccs:Class .
+
+
+###  http://data.europa.eu/949/UnprotectedLX
+ccs:UnprotectedLX rdf:type owl:NamedIndividual ,
+                           ccs:Class .
+
+
+###  http://data.europa.eu/949/VehicleOrientation
+ccs:VehicleOrientation rdf:type owl:NamedIndividual ,
+                                ccs:Enum .
+
+
+###  http://data.europa.eu/949/Velocity
+ccs:Velocity rdf:type owl:NamedIndividual ,
+                      ccs:Class .
+
+
+###  http://data.europa.eu/949/VerticalArc
+ccs:VerticalArc rdf:type owl:NamedIndividual ,
+                         ccs:Class .
+
+
+###  http://data.europa.eu/949/VerticalLine
+ccs:VerticalLine rdf:type owl:NamedIndividual ,
+                          ccs:Class .
+
+
+###  http://data.europa.eu/949/VerticalSegment
+ccs:VerticalSegment rdf:type owl:NamedIndividual ,
+                             ccs:Class .
+
+
+###  http://data.europa.eu/949/VoltageChange
+ccs:VoltageChange rdf:type owl:NamedIndividual ,
+                           ccs:Class .
+
+
+###  http://data.europa.eu/949/VoltageStart
+ccs:VoltageStart rdf:type owl:NamedIndividual ,
+                          ccs:Class .
+
+
+###  http://data.europa.eu/949/VoltageType
+ccs:VoltageType rdf:type owl:NamedIndividual ,
+                         ccs:Enum .
+
+
+###  http://data.europa.eu/949/WarningArea
+ccs:WarningArea rdf:type owl:NamedIndividual ,
+                         ccs:Class .
+
+
+###  http://data.europa.eu/949/WarningDevice
+ccs:WarningDevice rdf:type owl:NamedIndividual ,
+                           ccs:Class .
+
+
+###  http://data.europa.eu/949/WarningMeasure
+ccs:WarningMeasure rdf:type owl:NamedIndividual ,
+                            ccs:Class .
+
+
+###  http://data.europa.eu/949/WarningMeasureEvent
+ccs:WarningMeasureEvent rdf:type owl:NamedIndividual ,
+                                 ccs:Class .
+
+
+###  http://data.europa.eu/949/accPos
+ccs:accPos rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/accX
+ccs:accX rdf:type owl:NamedIndividual ,
+                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/accY
+ccs:accY rdf:type owl:NamedIndividual ,
+                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/accZ
+ccs:accZ rdf:type owl:NamedIndividual ,
+                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/accuracy
+ccs:accuracy rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/activation
+ccs:activation rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/activationTime
+ccs:activationTime rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/activeDir
+ccs:activeDir rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/activeObject
+ccs:activeObject rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/activityType
+ccs:activityType rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/actualTrainUnitIndex
+ccs:actualTrainUnitIndex rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/additionalBrakeData
+ccs:additionalBrakeData rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/additionalTrainRunningNumber
+ccs:additionalTrainRunningNumber rdf:type owl:NamedIndividual ,
+                                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/adhesionCategory
+ccs:adhesionCategory rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/adhesionIndependentBrakeState
+ccs:adhesionIndependentBrakeState rdf:type owl:NamedIndividual ,
+                                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/alignment
+ccs:alignment rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/alignment3d
+ccs:alignment3d rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/allocatedTrackEdges
+ccs:allocatedTrackEdges rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/allocationSections
+ccs:allocationSections rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/allocationType
+ccs:allocationType rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/allowedDrivingModes
+ccs:allowedDrivingModes rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/anyClass
+ccs:anyClass rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/appliedCant
+ccs:appliedCant rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/appliedToTrains
+ccs:appliedToTrains rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/areaId
+ccs:areaId rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/arrivalWindow
+ccs:arrivalWindow rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/atoAreaId
+ccs:atoAreaId rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/atoAreas
+ccs:atoAreas rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/atoState
+ccs:atoState rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/atoTimingPoint
+ccs:atoTimingPoint rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/atotsContactInfo
+ccs:atotsContactInfo rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/atotsContactInfoDir
+ccs:atotsContactInfoDir rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/atotsNidC
+ccs:atotsNidC rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/availableAdhesion
+ccs:availableAdhesion rdf:type owl:NamedIndividual ,
+                               ccs:Attribute .
+
+
+###  http://data.europa.eu/949/axleLoadCategory
+ccs:axleLoadCategory rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/axleLoadSpeedProfiles
+ccs:axleLoadSpeedProfiles rdf:type owl:NamedIndividual ,
+                                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/azimuth
+ccs:azimuth rdf:type owl:NamedIndividual ,
+                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/balise
+ccs:balise rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/baliseAccuracies
+ccs:baliseAccuracies rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/baliseGroup
+ccs:baliseGroup rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/baliseGroups
+ccs:baliseGroups rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/baliseId
+ccs:baliseId rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/baliseMountingSystem
+ccs:baliseMountingSystem rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/balises
+ccs:balises rdf:type owl:NamedIndividual ,
+                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/bgFunction
+ccs:bgFunction rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/bladeLength
+ccs:bladeLength rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/brakeModelType
+ccs:brakeModelType rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/brakePercentage
+ccs:brakePercentage rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/brakePosition
+ccs:brakePosition rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/brakeType
+ccs:brakeType rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/brakingModelType
+ccs:brakingModelType rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/bridges
+ccs:bridges rdf:type owl:NamedIndividual ,
+                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/bsType
+ccs:bsType rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/bufferStopAccuracies
+ccs:bufferStopAccuracies rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/bufferStopId
+ccs:bufferStopId rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/bufferStops
+ccs:bufferStops rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/byEmergencyBrake
+ccs:byEmergencyBrake rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/cant
+ccs:cant rdf:type owl:NamedIndividual ,
+                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/cantDeficiencyCategory
+ccs:cantDeficiencyCategory rdf:type owl:NamedIndividual ,
+                                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/cantPoints
+ccs:cantPoints rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/cants
+ccs:cants rdf:type owl:NamedIndividual ,
+                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/categoryType
+ccs:categoryType rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/centralisedClosing
+ccs:centralisedClosing rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/centralisedOpening
+ccs:centralisedOpening rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/changeOfGradeOfAutomation
+ccs:changeOfGradeOfAutomation rdf:type owl:NamedIndividual ,
+                                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/className
+ccs:className rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/clearancePoint
+ccs:clearancePoint rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/conditionType
+ccs:conditionType rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/configurationDataVersionRef
+ccs:configurationDataVersionRef rdf:type owl:NamedIndividual ,
+                                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/connection
+ccs:connection rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/content
+ccs:content rdf:type owl:NamedIndividual ,
+                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/controlledDpsGroup
+ccs:controlledDpsGroup rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/controlledTvpSection
+ccs:controlledTvpSection rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/coordinates
+ccs:coordinates rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/crossSection
+ccs:crossSection rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/crossing
+ccs:crossing rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/crossings
+ccs:crossings rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/current
+ccs:current rdf:type owl:NamedIndividual ,
+                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/currentChanges
+ccs:currentChanges rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/currentLimitations
+ccs:currentLimitations rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/currentStart
+ccs:currentStart rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/curve
+ccs:curve rdf:type owl:NamedIndividual ,
+                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/curveChanges
+ccs:curveChanges rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/curveRadius
+ccs:curveRadius rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/curveStart
+ccs:curveStart rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/curves
+ccs:curves rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/dangerPoints
+ccs:dangerPoints rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/dataValid
+ccs:dataValid rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/defaultMaxCurrent
+ccs:defaultMaxCurrent rdf:type owl:NamedIndividual ,
+                               ccs:Attribute .
+
+
+###  http://data.europa.eu/949/defaultSleepersType
+ccs:defaultSleepersType rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/defaultVoltage
+ccs:defaultVoltage rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/departure
+ccs:departure rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/dependencies
+ccs:dependencies rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/dependenciesType
+ccs:dependenciesType rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/derailToRight
+ccs:derailToRight rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/derailer
+ccs:derailer rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/derailers
+ccs:derailers rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/description
+ccs:description rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/designType
+ccs:designType rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/detectorType
+ccs:detectorType rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/deviceType
+ccs:deviceType rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/dirTrackEdgeSections
+ccs:dirTrackEdgeSections rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/dirTrackEdges
+ccs:dirTrackEdges rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/direction
+ccs:direction rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/doorData
+ccs:doorData rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/doorOpeningSide
+ccs:doorOpeningSide rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/doorSide
+ccs:doorSide rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/doorState
+ccs:doorState rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/dpsGroupRef
+ccs:dpsGroupRef rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/dpsGroups
+ccs:dpsGroups rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/dpsgDependencies
+ccs:dpsgDependencies rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/driveProtectionSections
+ccs:driveProtectionSections rdf:type owl:NamedIndividual ,
+                                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/driverId
+ccs:driverId rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/dynamicBrakeForceInhibitions
+ccs:dynamicBrakeForceInhibitions rdf:type owl:NamedIndividual ,
+                                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/dynamicBrakeForceLimit
+ccs:dynamicBrakeForceLimit rdf:type owl:NamedIndividual ,
+                                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/eddyCurrentBrakeState
+ccs:eddyCurrentBrakeState rdf:type owl:NamedIndividual ,
+                                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/electroPneumaticBrakeState
+ccs:electroPneumaticBrakeState rdf:type owl:NamedIndividual ,
+                                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/elementRef
+ccs:elementRef rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/elementState
+ccs:elementState rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/emergencyBrakeWeightPercentage
+ccs:emergencyBrakeWeightPercentage rdf:type owl:NamedIndividual ,
+                                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/endPoint
+ccs:endPoint rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/endPos
+ccs:endPos rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/endPositions
+ccs:endPositions rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/engAreaid
+ccs:engAreaid rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/engAreas
+ccs:engAreas rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/engineeringTrainsOnly
+ccs:engineeringTrainsOnly rdf:type owl:NamedIndividual ,
+                                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/eoaOffset
+ccs:eoaOffset rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/epsg
+ccs:epsg rdf:type owl:NamedIndividual ,
+                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/etcsDataAE
+ccs:etcsDataAE rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/etcsMarker
+ccs:etcsMarker rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/etcsMarkerAccuracies
+ccs:etcsMarkerAccuracies rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/etcsMarkers
+ccs:etcsMarkers rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/etcsPackets
+ccs:etcsPackets rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/etcsSystemVersions
+ccs:etcsSystemVersions rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/etcsTrainCategory
+ccs:etcsTrainCategory rdf:type owl:NamedIndividual ,
+                               ccs:Attribute .
+
+
+###  http://data.europa.eu/949/eventIdentifier
+ccs:eventIdentifier rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/eventType
+ccs:eventType rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/events
+ccs:events rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/executionState
+ccs:executionState rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/extent
+ccs:extent rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/extentQuality
+ccs:extentQuality rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/failureCode
+ccs:failureCode rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/fieldObjectControllers
+ccs:fieldObjectControllers rdf:type owl:NamedIndividual ,
+                                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/fixed
+ccs:fixed rdf:type owl:NamedIndividual ,
+                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/flank
+ccs:flank rdf:type owl:NamedIndividual ,
+                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/foulingPoints
+ccs:foulingPoints rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/fromCountryCode
+ccs:fromCountryCode rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/frontPosition
+ccs:frontPosition rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/functionalAreaId
+ccs:functionalAreaId rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/functionalAreas
+ccs:functionalAreas rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/functionalElements
+ccs:functionalElements rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/gauge
+ccs:gauge rdf:type owl:NamedIndividual ,
+                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/geometricPos
+ccs:geometricPos rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/geometryAreaId
+ccs:geometryAreaId rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/geometryAreas
+ccs:geometryAreas rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/gradient
+ccs:gradient rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/gradientChanges
+ccs:gradientChanges rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/gradientStart
+ccs:gradientStart rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/gradientValue
+ccs:gradientValue rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/header
+ccs:header rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/height
+ccs:height rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/holdTrain
+ccs:holdTrain rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/horizontalAlignment
+ccs:horizontalAlignment rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/horizontalSegmentArc
+ccs:horizontalSegmentArc rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/horizontalSegmentLine
+ccs:horizontalSegmentLine rdf:type owl:NamedIndividual ,
+                                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/id
+ccs:id rdf:type owl:NamedIndividual ,
+                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/infraTimingPoint
+ccs:infraTimingPoint rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/ipAddresses
+ccs:ipAddresses rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/isMoving
+ccs:isMoving rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/isSlipping
+ccs:isSlipping rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/isSwitchable
+ccs:isSwitchable rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/issuedAt
+ccs:issuedAt rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/kmAreaId
+ccs:kmAreaId rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/kmAreas
+ccs:kmAreas rdf:type owl:NamedIndividual ,
+                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/kmReferenceMarker
+ccs:kmReferenceMarker rdf:type owl:NamedIndividual ,
+                               ccs:Attribute .
+
+
+###  http://data.europa.eu/949/kmSigns
+ccs:kmSigns rdf:type owl:NamedIndividual ,
+                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/label
+ccs:label rdf:type owl:NamedIndividual ,
+                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/lastPassengerExchangeTime
+ccs:lastPassengerExchangeTime rdf:type owl:NamedIndividual ,
+                                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/latestArrival
+ccs:latestArrival rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/leadingOnBoardUnitId
+ccs:leadingOnBoardUnitId rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/levelCrossing
+ccs:levelCrossing rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/levelCrossings
+ccs:levelCrossings rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/limitedDynamicBrakeForces
+ccs:limitedDynamicBrakeForces rdf:type owl:NamedIndividual ,
+                                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/linearLocation
+ccs:linearLocation rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/loadingGaugeType
+ccs:loadingGaugeType rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/loadingGaugeTypes
+ccs:loadingGaugeTypes rdf:type owl:NamedIndividual ,
+                               ccs:Attribute .
+
+
+###  http://data.europa.eu/949/locationAccuracyAreaId
+ccs:locationAccuracyAreaId rdf:type owl:NamedIndividual ,
+                                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/locationAccuracyAreas
+ccs:locationAccuracyAreas rdf:type owl:NamedIndividual ,
+                                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/lowAdhesion
+ccs:lowAdhesion rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/m_dup
+ccs:m_dup rdf:type owl:NamedIndividual ,
+                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/m_mcount
+ccs:m_mcount rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/m_version
+ccs:m_version rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/magneticShoeBrakeState
+ccs:magneticShoeBrakeState rdf:type owl:NamedIndividual ,
+                                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/mapAreas
+ccs:mapAreas rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/markerFunctionStop
+ccs:markerFunctionStop rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/markerId
+ccs:markerId rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/mass
+ccs:mass rdf:type owl:NamedIndividual ,
+                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/maxAdhesion
+ccs:maxAdhesion rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/maxAvailableDynamicBrakeForce
+ccs:maxAvailableDynamicBrakeForce rdf:type owl:NamedIndividual ,
+                                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/maxAvailableDynamicBrakePower
+ccs:maxAvailableDynamicBrakePower rdf:type owl:NamedIndividual ,
+                                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/maxAvailableOutputPower
+ccs:maxAvailableOutputPower rdf:type owl:NamedIndividual ,
+                                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/maxAvailableServiceBrakeForce
+ccs:maxAvailableServiceBrakeForce rdf:type owl:NamedIndividual ,
+                                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/maxAvailableTractiveEffort
+ccs:maxAvailableTractiveEffort rdf:type owl:NamedIndividual ,
+                                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/maxAxleLoad
+ccs:maxAxleLoad rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/maxConfidentialInterval
+ccs:maxConfidentialInterval rdf:type owl:NamedIndividual ,
+                                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/maxCurrent
+ccs:maxCurrent rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/maxFlankProtectionSpeed
+ccs:maxFlankProtectionSpeed rdf:type owl:NamedIndividual ,
+                                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/maxSpeed
+ccs:maxSpeed rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/maximumSpeed
+ccs:maximumSpeed rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/minCantDeficiency
+ccs:minCantDeficiency rdf:type owl:NamedIndividual ,
+                               ccs:Attribute .
+
+
+###  http://data.europa.eu/949/minConfidentialInterval
+ccs:minConfidentialInterval rdf:type owl:NamedIndividual ,
+                                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/minDwellTime
+ccs:minDwellTime rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/minTrainAirTightness
+ccs:minTrainAirTightness rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/mode
+ccs:mode rdf:type owl:NamedIndividual ,
+                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/movement
+ccs:movement rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/movementEvent
+ccs:movementEvent rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/movementEvents
+ccs:movementEvents rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/movementRestrictions
+ccs:movementRestrictions rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/movements
+ccs:movements rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/name
+ccs:name rdf:type owl:NamedIndividual ,
+                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/nationalBorderAccuracies
+ccs:nationalBorderAccuracies rdf:type owl:NamedIndividual ,
+                                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/nationalBorderId
+ccs:nationalBorderId rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/nationalBorders
+ccs:nationalBorders rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/nidATOTS
+ccs:nidATOTS rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/nidBG
+ccs:nidBG rdf:type owl:NamedIndividual ,
+                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/nidC
+ccs:nidC rdf:type owl:NamedIndividual ,
+                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/nidCQualifier
+ccs:nidCQualifier rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/nidSP
+ccs:nidSP rdf:type owl:NamedIndividual ,
+                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/nidTP
+ccs:nidTP rdf:type owl:NamedIndividual ,
+                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/nominalRotatingMass
+ccs:nominalRotatingMass rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/nonStoppingArea
+ccs:nonStoppingArea rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/opName
+ccs:opName rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/opPoints
+ccs:opPoints rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/openingDoorSide
+ccs:openingDoorSide rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/operability
+ccs:operability rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/operationalConditionsFulfilled
+ccs:operationalConditionsFulfilled rdf:type owl:NamedIndividual ,
+                                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/operationalConsists
+ccs:operationalConsists rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/operationalPlanRef
+ccs:operationalPlanRef rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/operationalPoint
+ccs:operationalPoint rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/operationalPointType
+ccs:operationalPointType rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/operationalRadioHole
+ccs:operationalRadioHole rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/operationalTrainCategory
+ccs:operationalTrainCategory rdf:type owl:NamedIndividual ,
+                                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/operationalTrainUnits
+ccs:operationalTrainUnits rdf:type owl:NamedIndividual ,
+                                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/oppositeDirProfile
+ccs:oppositeDirProfile rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/otherCategoryDoesNotReplaceCantDeficiencySSP
+ccs:otherCategoryDoesNotReplaceCantDeficiencySSP rdf:type owl:NamedIndividual ,
+                                                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/otherCategoryReplacesCantDeficiencySSP
+ccs:otherCategoryReplacesCantDeficiencySSP rdf:type owl:NamedIndividual ,
+                                                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/pEnd
+ccs:pEnd rdf:type owl:NamedIndividual ,
+                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/pNominal
+ccs:pNominal rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/pReverse
+ccs:pReverse rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/pStart
+ccs:pStart rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/passengerData
+ccs:passengerData rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/passengerLoad
+ccs:passengerLoad rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/pbdDist
+ccs:pbdDist rdf:type owl:NamedIndividual ,
+                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/pbdGradient
+ccs:pbdGradient rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/permittedBrakingDistances
+ccs:permittedBrakingDistances rdf:type owl:NamedIndividual ,
+                                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/physicalConsist
+ccs:physicalConsist rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/physicalTrainIdentifier
+ccs:physicalTrainIdentifier rdf:type owl:NamedIndividual ,
+                                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/physicalTrainUnit
+ccs:physicalTrainUnit rdf:type owl:NamedIndividual ,
+                               ccs:Attribute .
+
+
+###  http://data.europa.eu/949/physicalVehicle
+ccs:physicalVehicle rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/planIdentifier
+ccs:planIdentifier rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/planIssuedTime
+ccs:planIssuedTime rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/platformAreas
+ccs:platformAreas rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/platformEdges
+ccs:platformEdges rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/platformId
+ccs:platformId rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/platforms
+ccs:platforms rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/pointLeft
+ccs:pointLeft rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/pointRight
+ccs:pointRight rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/pointSlope
+ccs:pointSlope rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/pos
+ccs:pos rdf:type owl:NamedIndividual ,
+                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/position
+ccs:position rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/positionInGroup
+ccs:positionInGroup rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/preconfiguredBrakingModel
+ccs:preconfiguredBrakingModel rdf:type owl:NamedIndividual ,
+                                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/preferredOppositeDir
+ccs:preferredOppositeDir rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/preferredSameDir
+ccs:preferredSameDir rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/prohibitedLoadingGaugeTypes
+ccs:prohibitedLoadingGaugeTypes rdf:type owl:NamedIndividual ,
+                                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/prohibitedLoadingType
+ccs:prohibitedLoadingType rdf:type owl:NamedIndividual ,
+                                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/propertiesAreaId
+ccs:propertiesAreaId rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/propertiesAreas
+ccs:propertiesAreas rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/protectedInfraElements
+ccs:protectedInfraElements rdf:type owl:NamedIndividual ,
+                                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/protectionType
+ccs:protectionType rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/q_link
+ccs:q_link rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/q_updown
+ccs:q_updown rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/radius
+ccs:radius rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/range
+ccs:range rdf:type owl:NamedIndividual ,
+                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/regenerativeBrakeState
+ccs:regenerativeBrakeState rdf:type owl:NamedIndividual ,
+                                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/regularBrakeWeightPercentage
+ccs:regularBrakeWeightPercentage rdf:type owl:NamedIndividual ,
+                                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/rejectReason
+ccs:rejectReason rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/relaxedCoupler
+ccs:relaxedCoupler rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/removalTime
+ccs:removalTime rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/reportTime
+ccs:reportTime rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/responseCode
+ccs:responseCode rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/responseTime
+ccs:responseTime rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/restrictedAspects
+ccs:restrictedAspects rdf:type owl:NamedIndividual ,
+                               ccs:Attribute .
+
+
+###  http://data.europa.eu/949/restriction
+ccs:restriction rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/restrictionAreas
+ccs:restrictionAreas rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/restrictionEvent
+ccs:restrictionEvent rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/restrictionEvents
+ccs:restrictionEvents rdf:type owl:NamedIndividual ,
+                               ccs:Attribute .
+
+
+###  http://data.europa.eu/949/restrictions
+ccs:restrictions rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/reversalTime
+ccs:reversalTime rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/runTime
+ccs:runTime rdf:type owl:NamedIndividual ,
+                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/safeTrainLength
+ccs:safeTrainLength rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/sameDir
+ccs:sameDir rdf:type owl:NamedIndividual ,
+                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/sameDirProfile
+ccs:sameDirProfile rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/sampledGeometryAreaId
+ccs:sampledGeometryAreaId rdf:type owl:NamedIndividual ,
+                                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/sampledGeometryAreas
+ccs:sampledGeometryAreas rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/sampledTrackEdgeGeometries
+ccs:sampledTrackEdgeGeometries rdf:type owl:NamedIndividual ,
+                                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/sampledTrackEdgeGeometryId
+ccs:sampledTrackEdgeGeometryId rdf:type owl:NamedIndividual ,
+                                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/secondaryTracks
+ccs:secondaryTracks rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/segmentId
+ccs:segmentId rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/segmentProfile
+ccs:segmentProfile rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/segmentProfileLength
+ccs:segmentProfileLength rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/segmentSection
+ccs:segmentSection rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/segments
+ccs:segments rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/shuntingTracks
+ccs:shuntingTracks rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/simplePoint
+ccs:simplePoint rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/simplePoints
+ccs:simplePoints rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/skipFromEnd
+ccs:skipFromEnd rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/skipFromPathEnd
+ccs:skipFromPathEnd rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/skipFromPathStart
+ccs:skipFromPathStart rdf:type owl:NamedIndividual ,
+                               ccs:Attribute .
+
+
+###  http://data.europa.eu/949/skipFromStart
+ccs:skipFromStart rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/sleeperFastening
+ccs:sleeperFastening rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/sleepers
+ccs:sleepers rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/slipCrossing
+ccs:slipCrossing rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/slipCrossings
+ccs:slipCrossings rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/slope
+ccs:slope rdf:type owl:NamedIndividual ,
+                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/slopes
+ccs:slopes rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/spNidC
+ccs:spNidC rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/specificLimitCategory
+ccs:specificLimitCategory rdf:type owl:NamedIndividual ,
+                                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/specificRestriction
+ccs:specificRestriction rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/specificRestrictions
+ccs:specificRestrictions rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/specificStaticSpeedLimits
+ccs:specificStaticSpeedLimits rdf:type owl:NamedIndividual ,
+                                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/specificStaticSpeedProfile
+ccs:specificStaticSpeedProfile rdf:type owl:NamedIndividual ,
+                                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/speed
+ccs:speed rdf:type owl:NamedIndividual ,
+                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/standardSize
+ccs:standardSize rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/start
+ccs:start rdf:type owl:NamedIndividual ,
+                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/startAltitude
+ccs:startAltitude rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/startOfA
+ccs:startOfA rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/startOfB
+ccs:startOfB rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/startPoint
+ccs:startPoint rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/startPos
+ccs:startPos rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/staticSpeedProfile
+ccs:staticSpeedProfile rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/staticSpeedProfileChanges
+ccs:staticSpeedProfileChanges rdf:type owl:NamedIndividual ,
+                                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/staticSpeedProfileStart
+ccs:staticSpeedProfileStart rdf:type owl:NamedIndividual ,
+                                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/stopDescription
+ccs:stopDescription rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/stopLocation
+ccs:stopLocation rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/stopLocationAccuracies
+ccs:stopLocationAccuracies rdf:type owl:NamedIndividual ,
+                                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/stopLocationId
+ccs:stopLocationId rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/stopLocationTolerance
+ccs:stopLocationTolerance rdf:type owl:NamedIndividual ,
+                                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/stopLocations
+ccs:stopLocations rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/stopSkipped
+ccs:stopSkipped rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/stopTrainLimit
+ccs:stopTrainLimit rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/stopType
+ccs:stopType rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/stoppingPointReachDistance
+ccs:stoppingPointReachDistance rdf:type owl:NamedIndividual ,
+                                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/supportedOnBoardEquipment
+ccs:supportedOnBoardEquipment rdf:type owl:NamedIndividual ,
+                                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/switchOffEddyCurrentBrakeEmergencyBrakes
+ccs:switchOffEddyCurrentBrakeEmergencyBrakes rdf:type owl:NamedIndividual ,
+                                                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/switchOffEddyCurrentBrakeServiceBrakes
+ccs:switchOffEddyCurrentBrakeServiceBrakes rdf:type owl:NamedIndividual ,
+                                                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/switchOffMagneticShoeBrakes
+ccs:switchOffMagneticShoeBrakes rdf:type owl:NamedIndividual ,
+                                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/switchOffRegenerativeBrakes
+ccs:switchOffRegenerativeBrakes rdf:type owl:NamedIndividual ,
+                                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/tafTapTsiTrainID
+ccs:tafTapTsiTrainID rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/targetTrainUnitIndex
+ccs:targetTrainUnitIndex rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/teSpeedProfiles
+ccs:teSpeedProfiles rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/telegram
+ccs:telegram rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/telegramChecksum
+ccs:telegramChecksum rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/temporarySpeedRestriction
+ccs:temporarySpeedRestriction rdf:type owl:NamedIndividual ,
+                                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/timeMeasurePoint
+ccs:timeMeasurePoint rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/timingPoint
+ccs:timingPoint rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/timingPoints
+ccs:timingPoints rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/timingPointsMapping
+ccs:timingPointsMapping rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/tipShift
+ccs:tipShift rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/toCountryCode
+ccs:toCountryCode rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/topoAreaId
+ccs:topoAreaId rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/topoAreas
+ccs:topoAreas rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/tpArea
+ccs:tpArea rdf:type owl:NamedIndividual ,
+                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackAllocation
+ccs:trackAllocation rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackConditions
+ccs:trackConditions rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdge
+ccs:trackEdge rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeA
+ccs:trackEdgeA rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeB
+ccs:trackEdgeB rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeGauges
+ccs:trackEdgeGauges rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeGeometries
+ccs:trackEdgeGeometries rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeGeometryId
+ccs:trackEdgeGeometryId rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeId
+ccs:trackEdgeId rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeKmSigns
+ccs:trackEdgeKmSigns rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeKmSignsId
+ccs:trackEdgeKmSignsId rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeLength
+ccs:trackEdgeLength rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeLinks
+ccs:trackEdgeLinks rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeLoadingGauges
+ccs:trackEdgeLoadingGauges rdf:type owl:NamedIndividual ,
+                                    ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgePoints
+ccs:trackEdgePoints rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeProjectionId
+ccs:trackEdgeProjectionId rdf:type owl:NamedIndividual ,
+                                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeProjections
+ccs:trackEdgeProjections rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeSection
+ccs:trackEdgeSection rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeSections
+ccs:trackEdgeSections rdf:type owl:NamedIndividual ,
+                               ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdgeSpeedProfileId
+ccs:trackEdgeSpeedProfileId rdf:type owl:NamedIndividual ,
+                                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackEdges
+ccs:trackEdges rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackPathToNextEvent
+ccs:trackPathToNextEvent rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackUsageAreaId
+ccs:trackUsageAreaId rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trackUsageAreas
+ccs:trackUsageAreas rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/tractionSystems
+ccs:tractionSystems rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/tractionTypes
+ccs:tractionTypes rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trainCategories
+ccs:trainCategories rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trainDetectors
+ccs:trainDetectors rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trainEndApplicability
+ccs:trainEndApplicability rdf:type owl:NamedIndividual ,
+                                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trainLength
+ccs:trainLength rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trainLoadType
+ccs:trainLoadType rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trainMaxAxles
+ccs:trainMaxAxles rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trainMaxLength
+ccs:trainMaxLength rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trainMaxSize
+ccs:trainMaxSize rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trainMaxWagons
+ccs:trainMaxWagons rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trainProtectionAreaId
+ccs:trainProtectionAreaId rdf:type owl:NamedIndividual ,
+                                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trainRunningNumber
+ccs:trainRunningNumber rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trainTypes
+ccs:trainTypes rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trainUnitActivities
+ccs:trainUnitActivities rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trainUnitIdentifier
+ccs:trainUnitIdentifier rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/trainUsage
+ccs:trainUsage rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/transition
+ccs:transition rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/transitionType
+ccs:transitionType rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/travelTimeMeasurementPoints
+ccs:travelTimeMeasurementPoints rdf:type owl:NamedIndividual ,
+                                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/tunnelIdentification
+ccs:tunnelIdentification rdf:type owl:NamedIndividual ,
+                                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/tunnelTubes
+ccs:tunnelTubes rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/tunnelType
+ccs:tunnelType rdf:type owl:NamedIndividual ,
+                        ccs:Attribute .
+
+
+###  http://data.europa.eu/949/tunnels
+ccs:tunnels rdf:type owl:NamedIndividual ,
+                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/tvps
+ccs:tvps rdf:type owl:NamedIndividual ,
+                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/type
+ccs:type rdf:type owl:NamedIndividual ,
+                  ccs:Attribute .
+
+
+###  http://data.europa.eu/949/uicIdentifier
+ccs:uicIdentifier rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/underpasses
+ccs:underpasses rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/unprotectedLXs
+ccs:unprotectedLXs rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/uopid
+ccs:uopid rdf:type owl:NamedIndividual ,
+                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/usedGradeOfAutomation
+ccs:usedGradeOfAutomation rdf:type owl:NamedIndividual ,
+                                   ccs:Attribute .
+
+
+###  http://data.europa.eu/949/utcOffset
+ccs:utcOffset rdf:type owl:NamedIndividual ,
+                       ccs:Attribute .
+
+
+###  http://data.europa.eu/949/vehicleMass
+ccs:vehicleMass rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/vehicleOrientation
+ccs:vehicleOrientation rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/velocity
+ccs:velocity rdf:type owl:NamedIndividual ,
+                      ccs:Attribute .
+
+
+###  http://data.europa.eu/949/velocityValue
+ccs:velocityValue rdf:type owl:NamedIndividual ,
+                           ccs:Attribute .
+
+
+###  http://data.europa.eu/949/version
+ccs:version rdf:type owl:NamedIndividual ,
+                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/versionTimestamp
+ccs:versionTimestamp rdf:type owl:NamedIndividual ,
+                              ccs:Attribute .
+
+
+###  http://data.europa.eu/949/verticalAlignment
+ccs:verticalAlignment rdf:type owl:NamedIndividual ,
+                               ccs:Attribute .
+
+
+###  http://data.europa.eu/949/verticalSegmentArc
+ccs:verticalSegmentArc rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/verticalSegmentLine
+ccs:verticalSegmentLine rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/verticallyOriented
+ccs:verticallyOriented rdf:type owl:NamedIndividual ,
+                                ccs:Attribute .
+
+
+###  http://data.europa.eu/949/voltage
+ccs:voltage rdf:type owl:NamedIndividual ,
+                     ccs:Attribute .
+
+
+###  http://data.europa.eu/949/voltageChanges
+ccs:voltageChanges rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/voltageStart
+ccs:voltageStart rdf:type owl:NamedIndividual ,
+                          ccs:Attribute .
+
+
+###  http://data.europa.eu/949/voltageType
+ccs:voltageType rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/warningArea
+ccs:warningArea rdf:type owl:NamedIndividual ,
+                         ccs:Attribute .
+
+
+###  http://data.europa.eu/949/warningDevices
+ccs:warningDevices rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/warningMeasure
+ccs:warningMeasure rdf:type owl:NamedIndividual ,
+                            ccs:Attribute .
+
+
+###  http://data.europa.eu/949/warningMeasureAreas
+ccs:warningMeasureAreas rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/warningMeasureEvent
+ccs:warningMeasureEvent rdf:type owl:NamedIndividual ,
+                                 ccs:Attribute .
+
+
+###  http://data.europa.eu/949/warningMeasures
+ccs:warningMeasures rdf:type owl:NamedIndividual ,
+                             ccs:Attribute .
+
+
+###  http://data.europa.eu/949/x
+ccs:x rdf:type owl:NamedIndividual ,
+               ccs:Attribute .
+
+
+###  http://data.europa.eu/949/y
+ccs:y rdf:type owl:NamedIndividual ,
+               ccs:Attribute .
+
+
+###  http://data.europa.eu/949/z
+ccs:z rdf:type owl:NamedIndividual ,
+               ccs:Attribute .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
