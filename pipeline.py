@@ -2,10 +2,10 @@ from typing import List
 from rdflib import Graph, URIRef
 
 requirements_graph = Graph()
-requirements_graph.parse("/home/siebe/Documents/era-hackaton/requirements_.ttl", format="turtle")
+requirements_graph.parse("requirements_.ttl", format="turtle")
 
 era_ccstms_graph = Graph()
-era_ccstms_graph.parse("/home/siebe/Documents/era-hackaton/era-ccstms_.ttl", format="turtle")
+era_ccstms_graph.parse("era-ccstms_.ttl", format="turtle")
 
 prefixes = """
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
